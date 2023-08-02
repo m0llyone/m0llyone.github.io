@@ -1,0 +1,134 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 37px 115px 105px;
+
+}
+
+.removeContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 90px;
+}
+
+.crossContainer {
+  display: flex;
+  justify-content: end;
+  margin: 0 10px 20px 0;
+}
+
+.productsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px ;
+}
+
+.productContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 38px;
+}
+
+.aboutContainer {
+  display: flex;
+  gap: 30px;
+}
+
+.propsContainer {
+  padding: 40px 115px 0 0;
+  display: flex;
+  column-gap: 50px;
+  color: #705A66;
+  font-family: 'Montserrat';
+  font-size: 16px;
+}
+
+.props {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  color: #705A66;
+  font-family: 'Montserrat';
+  font-size: 24px;
+}
+
+.priceContainer {
+  padding: 30px 10px 30px 20px;
+  height: 225px;
+  border-radius: 10px;
+  background: #F5EEE0;
+  color: #705A66;
+  font-family: 'Montserrat';
+}
+
+.price {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 60px;
+}
+
+.finalPrice {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.basketButton {
+  width: 287px;
+  height: 57px;
+  color: #F5EEE0;
+  background: #705A66;
+}
+
+.cross {
+  transition: .3s all;
+  fill:#705A66;
+  cursor: pointer;
+}
+
+.cross:hover {
+  fill: rgb(182, 9, 9);
+}
+
+.emptyBasket {
+  height: 490px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 70px 0;
+}
+
+.emptyBasketText {
+  font-family: 'Jeff';
+  font-size: 70px;
+  color: #705A66;
+  font-weight: 700;
+}
+
+.fullPriceContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.fullPrice {
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  background-color: #F5EEE0;
+  border-radius: 10px;
+  height: 100px;
+  font-family: 'Montserrat';
+  font-size: 22px;
+  font-weight: 700;
+  color: #705A66;
+}

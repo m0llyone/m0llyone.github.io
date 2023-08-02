@@ -1,0 +1,99 @@
+@import url('../../assets/fonts/fonts.css');
+
+.banner {
+  background: #F5F7F8;
+  position: relative;
+}
+
+.bannerContainer {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  height: 770px;
+}
+
+.titleContainer {
+  height: 236px;
+  position: absolute;
+  top: 100px;
+  right: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.title {
+  color: #705A66;
+  font-family: 'Moniqa';
+  font-size: 226.448px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.underTitle{
+  color: #705A66;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-size: 24px;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  margin-top: -30px;
+  margin-right: -13px;
+}
+
+.button {
+  width: 394px;
+  height: 67px;
+  max-width: 100%;
+  position: absolute;
+  top: 553px;
+  left: 532px;
+  z-index: 2;
+}
+
+.socialMedia {
+  position: absolute;
+  right: 0;
+  top: 553px;
+  width: 24px;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.socialMedia img {
+  cursor: pointer;
+}
+
+.mainPicture {
+  position: absolute;
+  top: 240px;
+  z-index: 1;
+}
+
+.tg {
+  transition: .3s;
+}
+
+.inst {
+  transition: .3s;
+}
+
+.facebook {
+  transition: .3s;
+}
+
+.facebook:hover {
+  fill: #0D8CF1
+}
+
+.tg:hover {
+  fill: #28A7E8;
+}
+
+.inst:hover {
+  fill: #CC426B;
+}

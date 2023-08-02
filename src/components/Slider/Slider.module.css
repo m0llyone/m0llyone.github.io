@@ -1,0 +1,57 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+}
+
+.dots {
+  display: none;
+}
+
+.title {
+  text-align: center;
+}
+
+.carousel {
+  padding: 60px 0 90px;
+  display: flex;
+}
+
+
+.button{
+  display: flex;
+  margin-top: -320px;
+  outline: none;
+  border-radius: 22px;
+  width: 76px;
+  height: 27px;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+  border: 1px solid #705A66 !important;
+  transition: 0.3s;
+}
+
+.nextButton {
+  margin-right: 100px;
+  background-image: url('../../assets/images/arrowRight.svg') !important;
+}
+
+.prevButton{
+  margin-left: 1160px;
+  background-image: url('../../assets/images/arrowLeft.svg') !important;
+}
+
+.buttonView {
+  width: 605px;
+  height: 67px;
+  margin: 0 auto;
+}
+
+.button:hover {
+  background-color: #F5EEE0 !important;
+}

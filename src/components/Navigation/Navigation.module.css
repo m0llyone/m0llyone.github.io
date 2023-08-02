@@ -1,0 +1,28 @@
+.container {
+  background: #F5F7F8;
+}
+
+.nav {
+  padding: 235px 100px 120px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  margin-top: -50px;
+  width: 276px;
+  height: 67px;
+}
+
+.buttonMargin{
+  margin-top: -34px;
+}

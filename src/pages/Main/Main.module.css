@@ -1,0 +1,145 @@
+.background {
+  margin-top: 125px;
+  background-image: url('../../assets/images/mainBackground.png');
+  background-repeat: no-repeat;
+  background-size: 100% 1380px;
+  /* 1355 */
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+}
+
+.textContainer {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+}
+
+.subtitle {
+  margin-bottom: 20px;
+  color: #705A66;
+  font-family: 'Montserrat';
+  font-size: 24px;
+}
+
+.subtitleFlex {
+  height: 95px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.text {
+  color: #705A66;
+  font-family: 'Montserrat';
+  font-size: 16px;
+}
+
+.mainContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 135px;
+  justify-content: center;
+}
+
+.deliveryContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 120px;
+}
+
+.delivery {
+  padding: 15px 50px 15px 30px;
+  height: 242px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.deliveryBorder {
+  border-left: 1px solid #DDD5C6;
+  border-right: 1px solid #DDD5C6;
+}
+
+.deliveryTitle {
+  text-align: center;
+  margin: 120px 0 60px;
+}
+
+.deliveryText {
+  max-width: 287px;
+  color: #705A66;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-size: 18px;
+}
+
+.aboutContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.aboutTitle {
+  margin-bottom: 40px;
+}
+
+.aboutContainerText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 395px;
+  width: 500px;
+  color: #705A66;
+  font-family: 'Montserrat';
+  margin-left: 105px;
+}
+
+.aboutName {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 24px;
+}
+
+.aboutText {
+  height: 285px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.titleInstagram {
+  margin-top: 80px;
+  text-align: center;
+}
+
+
+.instContainer {
+  margin: 0 auto;
+  max-width: 1440px;
+  margin-bottom: 120px;
+}
+
+.imgContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 60px 100px;
+}
+
+.buttonToInst {
+  width: 605px;
+  height: 67px;
+  margin: 0 auto;
+}

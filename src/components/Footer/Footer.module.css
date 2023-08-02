@@ -1,0 +1,60 @@
+.background {
+  background: #705A66;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 102px 135px 105px 103px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.contacts {
+  max-width: 315px;
+  height: 106px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #F5F7F8;
+  font-family: 'Montserrat';
+  font-size: 18px;
+}
+
+.link {
+  color: #F5F7F8;
+  font-family: 'Montserrat';
+  font-size: 18px;
+}
+
+.iconsContainer {
+  max-width: 182px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tg {
+  transition: .3s;
+}
+
+.inst {
+  transition: .3s;
+}
+
+/* .viber {
+  transition: .3s;
+} */
+
+.tg:hover {
+  fill: #28A7E8;
+}
+
+.inst:hover {
+  fill: #CC426B;
+}
+
+/* .viber:hover {
+  fill: #593EBC;
+} */

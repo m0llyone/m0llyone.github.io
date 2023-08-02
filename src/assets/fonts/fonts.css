@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Moniqa';
+  font-style: normal;
+  font-weight: 900;
+  src: url('./Moniqa-BlackDisplay\ 900.otf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  src: url('./Montserrat-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Jeff';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./Jeff\ Script.otf');
+}

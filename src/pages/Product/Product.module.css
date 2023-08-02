@@ -1,0 +1,235 @@
+.container {
+  padding: 20px 100px 90px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.productContainer {
+  display: flex;
+  gap: 30px;
+  margin-top: 60px;
+
+}
+
+.path {
+  color: #252525;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.productInfo {
+  max-width: 606px;
+  max-height: 522px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  color: #705A66;
+  font-family: 'Montserrat';
+  font-size: 42px;
+  margin-bottom: 2%;
+}
+
+.list {
+  margin-left: 20px;
+  color: #705A66;
+  font-family: 'Montserrat';
+  font-size: 18px;
+}
+
+.selectContainer {
+  margin: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.select {
+  position: relative;
+  width: 288px;
+}
+
+.select select {
+  background-color: #F5EEE0;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 20px 0 20px 30px;
+  outline: none;
+  color: #705A66;
+  font-family: 'Montserrat';
+  font-size: 18px;
+  max-width: 288px;
+  appearance: none;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.select:after {
+  content: "";
+  display: block;
+  background-image: url('../../assets/images/selectArrow.svg');
+  background-repeat: no-repeat;
+  pointer-events:none;
+  position: absolute;
+  width: 16px;
+  height: 9px;
+  top: 45%;
+  right: 13px;
+  transition: all 0.3s;
+}
+
+.select select:focus {
+  outline: none;
+  border: 1px solid #705A66;
+}
+
+.select:after:focus {
+  transform: rotate(-180deg);
+}
+
+.selectTitle {
+  margin: 30px 0 22px;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 0;
+  border-top: 1px solid #F5EEE0;
+  border-bottom: 1px solid #F5EEE0;
+}
+
+
+.price {
+  color: #705A66;
+  font-family: 'Montserrat';
+  font-size: 24px;
+}
+
+.button {
+  width: 287px;
+  height: 67px;
+  color: #F5EEE0;
+  background: #705A66;
+}
+
+.carouselContainer  {
+  margin: 30px 0 40px;
+  display: flex;
+  max-width: 500px;
+  justify-content: center;
+  position: relative;
+}
+
+.carousel {
+  max-width: 285px;
+}
+
+.dots {
+  display: none;
+}
+
+.buttonCarousel {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+.nextButton {
+  background-image: url('../../assets/images/miniSliderImage2.svg') !important;
+  position: absolute;
+  top: 25%;
+  right: -65px;
+}
+
+.prevButton {
+  background-image: url('../../assets/images/miniSliderImage.svg') !important;
+  position: absolute;
+  top: 25%;
+  left: -65px;
+}
+
+.switchContainer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 605px;
+  color: #705A66;
+  font-family:'Montserrat';
+  font-size: 18px;
+}
+
+.switch {
+  padding: 17px 0;
+  cursor: pointer;
+}
+
+.switchText {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 40px;
+  max-width: 500px;
+  height: 300px;
+  color: #705A66;
+  font-family: 'Montserrat';
+  font-size: 18px;
+  line-height: 130%;
+}
+
+.switchActive {
+  border-radius: 4px;
+  border-bottom: 4px solid #705A66;
+}
+
+.offerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonCarousel:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.modal {
+  border-radius: 10px;
+  padding: 35px !important;
+}
+
+.modalContainer {
+  padding: 20px;
+  width: 400px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 30px;
+  color: #705A66;
+  font-weight: 700;
+}
+
+.counterContainer {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modalButton {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.buttonToCart {
+  width: 290px;
+  height: 55px;
+}
