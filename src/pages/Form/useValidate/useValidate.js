@@ -6,6 +6,9 @@ export const useValidate = () => {
   const nameRegex = new RegExp(/[А-Яа-я]{2,10}/);
   const streetRegex = new RegExp(/^[А-Яа-я]{2,15}$/);
   const houseRegex = new RegExp(/^[0-9]{1,3}[0-9абвгде\/]{1,4}$/i);
+  const emailRegex = new RegExp(
+    /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
+  );
 
   const validate = (name, value) => {
     switch (name) {
@@ -25,6 +28,15 @@ export const useValidate = () => {
           setError({ ...error, phone: 'Х Please enter valid mobile number!' });
         } else {
           setError({ ...error, phone: '' });
+        }
+        break;
+      }
+
+      case 'email': {
+        if (!emailRegex.test(value)) {
+          setError({ ...error, email: 'Х Please enter valid email!' });
+        } else {
+          setError({ ...error, email: '' });
         }
         break;
       }

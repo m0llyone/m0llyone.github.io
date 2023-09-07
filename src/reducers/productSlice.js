@@ -113,13 +113,11 @@ const productSlice = createSlice({
 
     add_props_product: (state, action) => {
       const { id, name, value, link } = action.payload;
-      // console.log(id, name, value, link);
       state.products.forEach((item) => {
         if (item.link === link) {
           item.products.forEach((elem) => {
             if (elem.id === +id && elem.cartCount > 0) {
               elem = { ...elem, [name]: value };
-              console.log(elem);
             }
           });
         }

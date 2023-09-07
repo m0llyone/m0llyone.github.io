@@ -1,9 +1,5 @@
 import styles from './Modal.module.css';
 import { ReactComponent as Cross } from '../../assets/images/crossIcon.svg';
-import { Title } from '../Title/Title';
-import cake from '../../assets/images/mainCake.png';
-import { Button } from '../Button/Button';
-import { Link } from 'react-router-dom';
 import { AppContext } from '../../App';
 import { useContext } from 'react';
 export const Modal = ({ addStyles, children }) => {

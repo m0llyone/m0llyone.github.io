@@ -69,21 +69,21 @@
   cursor: pointer;
   display: block;
   max-width: 394px;
+
 }
 
 .formSelect::after {
   content: " ";
-  /* display: block; */
   background-image: url('../../assets/images/chevron.svg');
   background-repeat: no-repeat;
   pointer-events: none;
-  /* width: 15px; */
-  /* height: 10px; */
-  /* position: absolute; */
-  /* top: 69%; */
-  /* right: 23px; */
-  /* z-index: 2; */
-  /* margin-top: -3px; */
+  width: 15px;
+  height: 10px;
+  position: absolute;
+  top: 69%;
+  right: 23px;
+  z-index: 2;
+  margin-top: -3px;
   transition: all 0.3s;
 }
 

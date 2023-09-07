@@ -6,7 +6,6 @@ import OrderForm from '../pages/Form/OrderForm';
 
 export const routes = [
   { path: '/', element: Main },
-  // { path: '/catalog', element: Products },
   { path: '/catalog/:url', element: Products },
   { path: '/catalog/:url/:id', element: Product },
   { path: '/basket', element: Basket },

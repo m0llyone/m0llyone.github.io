@@ -1,9 +1,7 @@
 import { initialState } from '../../data/initialState';
 import styles from './Products.module.css';
-import { Link, useParams, NavLink, useLocation } from 'react-router-dom';
+import { useParams, NavLink, useLocation } from 'react-router-dom';
 import { Title } from '../../common/Title/Title';
-import { Button } from '../../common/Button/Button';
-import { increment } from '../../reducers/counterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { increase_product } from '../../reducers/productSlice';
 import { useContext } from 'react';

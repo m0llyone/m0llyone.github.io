@@ -1,10 +1,8 @@
 import styles from './Product.module.css';
-import { useNavigate, useParams } from 'react-router-dom';
-import { initialState } from '../../data/initialState';
+import { useParams } from 'react-router-dom';
 import { Button } from '../../common/Button/Button';
-import stylesProduct from '../Products/Products.module.css';
 import { Link } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import Carousel from 'nuka-carousel';
 import { AppContext } from '../../App';
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,11 +34,8 @@ const Product = () => {
     });
   });
 
-  const [options, setOptions] = useState();
-  // console.log(options);
   const handleChange = ({ target }) => {
     const { id, name, value } = target;
-    // setOptions({ ...options, [name]: value });
     dispatch(
       add_props_product({
         id: id,
@@ -49,7 +44,6 @@ const Product = () => {
         link: link,
       })
     );
-    console.log(name, value, id, link);
   };
 
   const dispatch = useDispatch();
@@ -68,14 +62,7 @@ const Product = () => {
 
   const addToCart = ({ currentTarget }) => {
     const { id } = currentTarget;
-    // setCounter(counter + 1);
     dispatch(increase_product({ id: id, link: link }));
-  };
-
-  const setValue = () => {
-    let select = document.getElementById('kind');
-    let val = select.option[select.selectedIndex].value;
-    return val;
   };
 
   return (
@@ -120,18 +107,8 @@ const Product = () => {
                 pagingDotsClassName: styles.dots,
               }}
             >
-              <img
-                // onClick={() => console.log('1')}
-                className={styles.carouselImage}
-                src={image.src}
-                alt="img"
-              />
-              <img
-                // onClick={() => console.log('2')}
-                className={styles.carouselImage}
-                src={image.src}
-                alt="img"
-              />
+              <img className={styles.carouselImage} src={image.src} alt="img" />
+              <img className={styles.carouselImage} src={image.src} alt="img" />
               <img className={styles.carouselImage} src={image.src} alt="img" />
             </Carousel>
           </div>
@@ -152,14 +129,7 @@ const Product = () => {
             </div>
             <div className={styles.selectContainer}>
               <div className={styles.select}>
-                <select
-                  onChange={handleChange}
-                  name="kind"
-                  id="kind"
-                  // value={value}
-                  id={id}
-                  value={setValue}
-                >
+                <select onChange={handleChange} name="kind" id={id}>
                   <option value="">Вид</option>
                   <option value="Ванильный">Ванильный</option>
                   <option value="Карамельный">Карамельный</option>
@@ -175,12 +145,7 @@ const Product = () => {
               </div>
 
               <div className={styles.select}>
-                <select
-                  onChange={handleChange}
-                  name="decor"
-                  id={id}
-                  // value={product.decor}
-                >
+                <select onChange={handleChange} name="decor" id={id}>
                   <option value="">Декор</option>
                   <option value="Без декора">Без декора</option>
                   <option value="Ягоды">Ягоды</option>
@@ -189,12 +154,7 @@ const Product = () => {
                 </select>
               </div>
               <div className={styles.select}>
-                <select
-                  onChange={handleChange}
-                  name="heft"
-                  id={id}
-                  // value={product.heft}
-                >
+                <select onChange={handleChange} name="heft" id={id}>
                   <option value="">Вес готового изделия</option>
                   <option value="0.5">0,5 кг</option>
                   <option value="1">1 кг</option>

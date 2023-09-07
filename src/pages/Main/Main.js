@@ -13,8 +13,6 @@ import { Navigation } from '../../components/Navigation/Navigation';
 import { Slider } from '../../components/Slider/Slider';
 import { Button } from '../../common/Button/Button';
 import { instImages } from '../../data/instImages';
-import { AppContext } from '../../App';
-import { useContext } from 'react';
 import Carousel from 'nuka-carousel';
 
 const Main = () => {

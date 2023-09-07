@@ -15,7 +15,7 @@ const initialState = {
   phone: '',
   email: '',
   date: '',
-  delivery: '',
+  delivery: 'selfCall',
   address: {
     place: '',
     street: '',
@@ -25,7 +25,7 @@ const initialState = {
     flat: '',
     floor: '',
   },
-  payment: ' ',
+  payment: 'cash',
   comment: '',
 };
 const OrderForm = () => {
@@ -37,8 +37,6 @@ const OrderForm = () => {
     useContext(AppContext);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {});
 
   const handleChange = ({ target }) => {
     const { name, value, id, type, checked } = target;
@@ -62,7 +60,6 @@ const OrderForm = () => {
   const handleSubmit = () => {
     if (isDisabled == false) {
       setModal(true);
-      console.log(state);
     }
   };
 
@@ -70,7 +67,6 @@ const OrderForm = () => {
     const { id } = currentTarget;
     const clearBasket = basket.filter((el) => el.id !== +id);
     dispatch(remove_product({ id: id }));
-    // localStorage.removeItem('basket', id);
     setBasket(clearBasket);
   };
 
@@ -80,9 +76,6 @@ const OrderForm = () => {
         Продолжить покупки
       </Link>
       <Title addStyles={styles.mainTitle} title="Оформление заказа" />
-      {/* <pre styles={{ padding: '20px', background: 'white' }}>
-        {JSON.stringify(state, null, 2)}
-      </pre> */}
       <div className={styles.mainContainer}>
         <form onSubmit={handleSubmit}>
           <div className={styles.inputContainer}>
@@ -135,7 +128,7 @@ const OrderForm = () => {
                   E-mail
                 </label>
               </div>
-              <span>{error.email}</span>
+              <span className={styles.error}>{error.email}</span>
             </div>
             <div>
               <div className={styles.inputGroup}>
@@ -160,9 +153,9 @@ const OrderForm = () => {
               <div className={styles.radio}>
                 <input
                   type="radio"
-                  id="selfCall"
                   name="delivery"
                   value="selfCall"
+                  id="selfCall"
                   checked={state.delivery === 'selfCall'}
                   onChange={handleChange}
                   onClick={() => {
@@ -219,15 +212,13 @@ const OrderForm = () => {
           <div>
             <div className={styles.inputGroup}>
               <select
-                // id="streetPickUp"
-                // name="address"
-                // value={state.address.streetPickUp}
-                id="place"
+                id="streetPickUp"
+                name="address"
+                value={state.address.streetPickUp}
                 placeholder=" "
                 className={[styles.formInput, styles.formSelect].join(' ')}
-                name="place"
-                value={state.address.flat}
                 onChange={handleChange}
+                style={{ marginBottom: '20px' }}
               >
                 {' '}
                 <option className={styles.option} value="not indicated">

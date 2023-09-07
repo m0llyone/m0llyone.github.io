@@ -8,8 +8,6 @@ import { Weather } from '../../common/Weather/Weather';
 import { useSelector } from 'react-redux';
 
 export const Footer = () => {
-  const { weather } = useSelector((state) => state.weather);
-  console.log(weather);
   return (
     <div className={styles.background}>
       <div className={styles.container}>

@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Basket.module.css';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { Button } from '../../common/Button/Button';
 import { ReactComponent as Cross } from '../../assets/images/crossIcon.svg';
-import { useNavigate, Link, json } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { AppContext } from '../../App';
 import cart from '../../assets/images/emptyCart.svg';
 import {
@@ -39,14 +39,10 @@ const Basket = () => {
         }
       });
     });
-    // let storage = JSON.parse(localStorage.getItem('basket'));
-    // if (storage === null || !storage.length) {
-    //   localStorage.setItem('basket', JSON.stringify(basketState));
-    //   storage = JSON.parse(localStorage.getItem('basket'));
-    // }
+
     setBasket(basketState);
   }, []);
-  console.log(basket);
+
   useEffect(() => {
     let storage = JSON.parse(localStorage.getItem('basket')) || [];
     if (!storage.length || storage === null) {

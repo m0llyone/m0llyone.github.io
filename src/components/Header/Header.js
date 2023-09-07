@@ -2,23 +2,14 @@ import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logoGrann.svg';
 import cart from '../../assets/images/cart.svg';
-import { useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
-import { AppContext } from '../../App';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { Burger } from '../../common/Burger/Burger';
 import { ReactComponent as Cross } from '../../assets/images/crossIcon.svg';
 import cake from '../../assets/images/burgerImage.svg';
 export const Header = () => {
-  const { products } = useSelector((state) => state.products);
-  const { setModal, basket, ref } = useContext(AppContext);
-  const { id } = useParams();
   const navigate = useNavigate();
   const [isShow, setIsShow] = useState(false);
-  const { counter } = useContext(AppContext);
-  const handleScroll = () => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <div className={styles.header}>
@@ -42,7 +33,6 @@ export const Header = () => {
           <div className={styles.linkContainer}>
             <Link
               onClick={() => {
-                handleScroll();
                 setIsShow(!isShow);
               }}
               className={styles.link}
@@ -83,7 +73,6 @@ export const Header = () => {
           </div>
         </nav>
         <div className={styles.basket}>
-          {/* <div className={styles.count}>{counter}</div> */}
           <Burger isShow={isShow} setIsShow={setIsShow} />
           <div onClick={() => navigate('/basket')} className={styles.cart}>
             <img style={{ cursor: 'pointer' }} src={cart} alt="cart" />
