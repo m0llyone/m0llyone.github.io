@@ -7,8 +7,15 @@
 .productContainer {
   display: flex;
   gap: 30px;
-  margin-top: 60px;
+  margin: 60px 0 40px;
+  height: 627px;
+}
 
+.productCarousel {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .path {
@@ -120,7 +127,6 @@
 }
 
 .carouselContainer  {
-  margin: 30px 0 40px;
   display: flex;
   max-width: 500px;
   justify-content: center;
@@ -187,11 +193,14 @@
 .switchActive {
   border-radius: 4px;
   border-bottom: 4px solid #705A66;
+  z-index: 1;
 }
 
 .offerContainer {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
 }
 
 .buttonCarousel:hover {
@@ -232,4 +241,166 @@
 .buttonToCart {
   width: 290px;
   height: 55px;
+}
+
+.imageProduct {
+  max-width: 100%;
+  min-width: 355px;
+  width: 500px;
+  height: 522px;
+}
+
+.carouselImage {
+  width: 75px;
+  cursor: pointer;
+}
+
+.titleMobile {
+  display: none;
+}
+
+.switchLineContainer {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.switchLine {
+  display: none;
+  height: 4px;
+  border-radius: 4px;
+  background: #F5EEE0;
+  margin-top: -4px;
+  max-width: 605px;
+}
+
+.modalButton:hover {
+  box-shadow: none;
+}
+
+@media screen and (max-width: 1270px){
+  .container {
+    padding: 30px 50px 100px;
+  }
+
+  .imageProduct {
+    height: 400px;
+  }
+
+  .title {
+    font-size: 35px;
+  }
+
+  .productContainer {
+    height: auto;
+  }
+
+  .productCarousel {
+    justify-content: start;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .productContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imageProduct {
+    width: 355px;
+    height: 372px;
+  }
+
+  .productTitle {
+    display: none;
+  }
+
+  .titleMobile {
+    display: block;
+    color: #705A66;
+    font-family: 'Montserrat';
+    font-size: 32px;
+  }
+
+  .switchContainer, .switchText {
+    font-size: 16px;
+  }
+
+  .switchText {
+    height: auto !important;
+    gap: 18px;
+  }
+
+  .selectContainer {
+    justify-content: center;
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+  .productContainer {
+    margin-top: 40px;
+  }
+
+  .selectContainer {
+    margin: 40px 0;
+  }
+
+  .container {
+    padding: 30px 10px 100px;
+  }
+
+  .offerContainer {
+    gap: 20px;
+  }
+  .imageProduct {
+    height: 372px;
+  }
+
+  .carouselImage {
+    width: 50px;
+  }
+
+  .title, .titleMobile {
+    font-size: 18px;
+  }
+
+  .priceContainer {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0 30px;
+  }
+
+  .carousel {
+    max-width: 250px;
+   }
+
+  .nextButton {
+    right: -52px;
+  }
+
+  .prevButton {
+    left: -52px;
+  }
+
+  .switchLine {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 565px) {
+  .modalContainer {
+    font-size: 27px;
+    padding: 20px 0;
+    max-width: 330px;
+  }
+
+  .modal {
+    padding: 20px 10px !important;
+  }
+
+  .buttonToCart {
+    font-size: 18px;
+  }
 }

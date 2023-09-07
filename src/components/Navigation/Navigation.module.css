@@ -8,6 +8,7 @@
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
 }
 
@@ -23,6 +24,20 @@
   height: 67px;
 }
 
-.buttonMargin{
+.buttonMargin {
   margin-top: -34px;
+}
+
+@media screen and (max-width: 1080px) {
+  .nav {
+    padding: 100px 10px;
+  }
+
+  .linkContainer img {
+    width: 355px;
+  }
+
+  .button {
+    font-size: 18px;
+  }
 }

@@ -2,8 +2,8 @@
   margin-top: 125px;
   background-image: url('../../assets/images/mainBackground.png');
   background-repeat: no-repeat;
-  background-size: 100% 1380px;
-  /* 1355 */
+  background-position: top;
+  background-size: 100% 68%;
 }
 
 .container {
@@ -13,6 +13,7 @@
 
 .title {
   text-align: center;
+  padding: 0 10px;
 }
 
 .textContainer {
@@ -53,6 +54,7 @@
 .deliveryContainer {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: 120px;
 }
 
@@ -86,6 +88,7 @@
   display: flex;
   align-items: center;
   column-gap: 30px;
+  padding: 0 10px 0 100px;
 }
 
 .aboutTitle {
@@ -96,8 +99,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 395px;
-  width: 500px;
+  min-height: 395px;
+  max-width: 500px;
+  width: 100%;
   color: #705A66;
   font-family: 'Montserrat';
   margin-left: 105px;
@@ -112,11 +116,21 @@
 }
 
 .aboutText {
-  height: 285px;
+  min-height: 285px;
+  max-width: 500px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-size: 18px;
+}
+
+.aboutContainerTextInfo {
+  font-size: 16px;
+}
+
+.aboutTitleMobile {
+  display: none;
 }
 
 .titleInstagram {
@@ -134,12 +148,222 @@
 .imgContainer {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
   padding: 60px 100px;
+}
+
+.instImg {
+  transition: 1s;
+  cursor: pointer;
+}
+
+.instImg:hover {
+  transform: scale(1.2);
 }
 
 .buttonToInst {
   width: 605px;
   height: 67px;
   margin: 0 auto;
+}
+
+.carouselInst {
+  display: none;
+}
+
+.dotsContainer {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 40px !important;
+    gap: 20px;
+    max-width: 104px;
+    margin-top: 50px !important;
+}
+
+.sliderContainer {
+  margin-top: -20px;
+}
+
+@media screen and (max-width:1240px) {
+  .background {
+    background-size: 100% 74%;
+  }
+
+  .aboutContainer {
+    padding-left: 10px;
+  }
+
+  .aboutContainerText {
+    margin-left: 0;
+  }
+
+  .mainContainer {
+    padding: 0 10px;
+  }
+
+  .pictureContainer img {
+    width: 355px;
+  }
+
+  .mainContainer {
+    gap: 67px;
+    flex-direction: column;
+  }
+
+  .textContainer {
+    margin-top: 60px;
+    order: 0;
+  }
+
+  .pictureContainer {
+    order: 1;
+  }
+
+
+}
+
+@media screen and (max-width: 1110px) {
+  .aboutImg {
+    width: 355px;
+    height: 533px;
+  }
+
+  .background {
+    background-size: 1110px 80.5%;
+  }
+
+}
+
+@media screen and (max-width: 790px) {
+  .background {
+    background-position: top;
+    background-size: 1110px 65%;
+  }
+
+  .buttonToInst {
+    width: 355px;
+    font-size: 18px !important;
+  }
+
+  .aboutTitleMobile {
+    display: block;
+  }
+
+  .aboutText {
+    font-size: 16px;
+    height: 320px;
+  }
+
+  .aboutName {
+    font-size: 18px;
+    max-height: 49px;
+    text-align: center;
+  }
+
+  .aboutContainerTextInfo {
+    font-size: 14px;
+  }
+
+  .aboutContainer {
+    flex-direction: column;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .textContainer {
+    text-align: center;
+  }
+
+  .aboutTitle {
+    display: none;
+  }
+
+  .aboutImg {
+    margin: 40px 0 30px;
+  }
+
+  .delivery {
+    padding: 30px 0;
+  }
+
+  .deliveryTitle {
+    margin: 100px 0 40px;
+  }
+
+  .deliveryText {
+    font-size: 16px;
+    min-width: 287px;
+  }
+
+  .subtitle {
+    margin-bottom: 10px;
+  }
+
+  .deliveryBorder {
+    width: 241px;
+    border-top: 1px solid #DDD5C6;
+    border-bottom: 1px solid #DDD5C6;
+    border-left: none;
+    border-right: none;
+  }
+
+    .button {
+    display: flex;
+    outline: none;
+    border-radius: 22px;
+    width: 76px;
+    height: 27px;
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+    border: 1px solid #705A66 !important;
+    transition: 0.3s;
+    position: absolute;
+    bottom: -48px;
+  }
+
+  .position {
+    right: 0;
+  }
+
+  .button:hover {
+  background-color: #F5EEE0 !important;
+  }
+
+  .instImg:hover {
+    transform: none;
+  }
+
+  .carouselInst {
+    display: block;
+    padding: 40px 10px 110px;
+  }
+
+  .imgContainer {
+    display: none;
+  }
+
+  .carousel {
+    display: flex;
+  }
+
+  .instImg {
+    width: 261px;
+    height: 261px;
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width:490px) {
+  .background {
+    background-position: top;
+    background-size: 1110px 68%;
+  }
 }

@@ -6,13 +6,13 @@ import chevron from '../../assets/images/chevron.svg';
 
 export const Accordion = () => {
   const [toggle, setToggle] = useState(false);
-  // const [height, setHeight] = useState();
+  const [height, setHeight] = useState();
 
-  // const refHeight = useRef();
+  const refHeight = useRef();
 
-  // useEffect(() => {
-  //   setHeight(`${refHeight.current.scrollHeight}px`);
-  // });
+  useEffect(() => {
+    setHeight(`${refHeight.current.scrollHeight}px`);
+  });
 
   const toggleState = (index) => {
     if (toggle === index) {
@@ -48,8 +48,8 @@ export const Accordion = () => {
                 ? [styles.active, styles.answer].join(' ')
                 : styles.answer
             }
-            // style={{ height: toggle === index ? `${height}` : '0px' }}
-            // ref={refHeight}
+            style={{ height: toggle === index ? `${height}` : '0px' }}
+            ref={refHeight}
           >
             {toggle === index ? `${item.answer}` : null}
           </div>

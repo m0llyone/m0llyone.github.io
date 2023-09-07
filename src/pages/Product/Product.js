@@ -4,31 +4,30 @@ import { initialState } from '../../data/initialState';
 import { Button } from '../../common/Button/Button';
 import stylesProduct from '../Products/Products.module.css';
 import { Link } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Carousel from 'nuka-carousel';
 import { AppContext } from '../../App';
 import { useDispatch, useSelector } from 'react-redux';
-import { decrease_price, increase_product } from '../../reducers/productSlice';
+import {
+  add_props_product,
+  decrease_price,
+  increase_product,
+} from '../../reducers/productSlice';
 import { Modal } from '../../common/Modal/Modal';
+import { Item } from '../../common/Item/Item';
 
-export const parametres = {
-  Вид: '',
-  Декор: '',
-  Вес: '',
-};
 const Product = () => {
   const { url, id } = useParams();
-  const state = useSelector((state) => state.products.products);
-
-  const { products, link } = state.find((item) => item.link === url);
-  const product = products.find((el) => el.id === +id);
-  const { image, title, price, cartCount } = product;
   const [active, setActive] = useState(0);
-  const { params, setParams, basket, setBasket, setModal } =
-    useContext(AppContext);
-  const navigate = useNavigate();
+  const state = useSelector((state) => state.products.products);
+  const { products, link } = state.find((item) => item.link === url);
+  let product = products.find((el) => el.id === +id);
+  const { title, price, image, cartCount } = product;
+  const { setModal } = useContext(AppContext);
+  // const [params, setParams] = useState(product);
+
   let offer = [];
-  initialState.forEach((item) => {
+  state.forEach((item) => {
     const path = item.link;
     item.products.forEach((el) => {
       if (el.id % 8 === 0) {
@@ -37,10 +36,22 @@ const Product = () => {
     });
   });
 
+  const [options, setOptions] = useState();
+  // console.log(options);
   const handleChange = ({ target }) => {
-    const { name, value } = target;
-    setParams({ ...params, [name]: value });
+    const { id, name, value } = target;
+    // setOptions({ ...options, [name]: value });
+    dispatch(
+      add_props_product({
+        id: id,
+        name: name,
+        value: value,
+        link: link,
+      })
+    );
+    console.log(name, value, id, link);
   };
+
   const dispatch = useDispatch();
 
   const handleAddCount = ({ currentTarget }) => {
@@ -54,7 +65,19 @@ const Product = () => {
       dispatch(decrease_price({ id: id, link: link }));
     }
   };
-  // console.log(params);
+
+  const addToCart = ({ currentTarget }) => {
+    const { id } = currentTarget;
+    // setCounter(counter + 1);
+    dispatch(increase_product({ id: id, link: link }));
+  };
+
+  const setValue = () => {
+    let select = document.getElementById('kind');
+    let val = select.option[select.selectedIndex].value;
+    return val;
+  };
+
   return (
     <div className={styles.container}>
       <div>
@@ -67,17 +90,57 @@ const Product = () => {
         <span className={styles.path}>{title}</span>
       </div>
       <div className={styles.productContainer}>
-        <div>
+        <div className={styles.titleMobile}>{title}</div>
+        <div className={styles.productCarousel}>
           <img
-            width={'500 px'}
-            height={'522px'}
+            className={styles.imageProduct}
             src={image.src}
             alt={image.alt}
           />
+
+          <div className={styles.carouselContainer}>
+            <Carousel
+              className={styles.carousel}
+              cellAlign="center"
+              wrapAround={true}
+              speed={2000}
+              autoplay={true}
+              slidesToShow={3}
+              defaultControlsConfig={{
+                nextButtonText: ' ',
+                prevButtonText: ' ',
+                nextButtonClassName: [
+                  styles.buttonCarousel,
+                  styles.nextButton,
+                ].join(' '),
+                prevButtonClassName: [
+                  styles.buttonCarousel,
+                  styles.prevButton,
+                ].join(' '),
+                pagingDotsClassName: styles.dots,
+              }}
+            >
+              <img
+                // onClick={() => console.log('1')}
+                className={styles.carouselImage}
+                src={image.src}
+                alt="img"
+              />
+              <img
+                // onClick={() => console.log('2')}
+                className={styles.carouselImage}
+                src={image.src}
+                alt="img"
+              />
+              <img className={styles.carouselImage} src={image.src} alt="img" />
+            </Carousel>
+          </div>
         </div>
         <div className={styles.productInfo}>
           <div>
-            <div className={styles.title}>{title}</div>
+            <div className={[styles.title, styles.productTitle].join(' ')}>
+              {title}
+            </div>
           </div>
           <div>
             <div>
@@ -89,7 +152,14 @@ const Product = () => {
             </div>
             <div className={styles.selectContainer}>
               <div className={styles.select}>
-                <select onChange={handleChange} name="Вид" id="Вид">
+                <select
+                  onChange={handleChange}
+                  name="kind"
+                  id="kind"
+                  // value={value}
+                  id={id}
+                  value={setValue}
+                >
                   <option value="">Вид</option>
                   <option value="Ванильный">Ванильный</option>
                   <option value="Карамельный">Карамельный</option>
@@ -105,7 +175,12 @@ const Product = () => {
               </div>
 
               <div className={styles.select}>
-                <select onChange={handleChange} name="Декор" id="decor">
+                <select
+                  onChange={handleChange}
+                  name="decor"
+                  id={id}
+                  // value={product.decor}
+                >
                   <option value="">Декор</option>
                   <option value="Без декора">Без декора</option>
                   <option value="Ягоды">Ягоды</option>
@@ -114,7 +189,12 @@ const Product = () => {
                 </select>
               </div>
               <div className={styles.select}>
-                <select onChange={handleChange} name="Вес" id="weight">
+                <select
+                  onChange={handleChange}
+                  name="heft"
+                  id={id}
+                  // value={product.heft}
+                >
                   <option value="">Вес готового изделия</option>
                   <option value="0.5">0,5 кг</option>
                   <option value="1">1 кг</option>
@@ -125,6 +205,7 @@ const Product = () => {
                 </select>
               </div>
             </div>
+
             <div className={styles.priceContainer}>
               <div className={styles.price}>{price} руб</div>
               <Modal addStyles={styles.modal}>
@@ -189,7 +270,11 @@ const Product = () => {
                   </div>
                   <div>
                     <Button
-                      onClick={() => setModal(false)}
+                      onClick={(e) => {
+                        setModal(false);
+                        e.preventDefault();
+                        handleChange(e);
+                      }}
                       addStyles={styles.buttonToCart}
                     >
                       Добавить
@@ -199,7 +284,9 @@ const Product = () => {
               </Modal>
               <Button
                 id={id}
-                onClick={() => setModal(true)}
+                onClick={() => {
+                  setModal(true);
+                }}
                 addStyles={styles.button}
               >
                 Заказать
@@ -208,82 +295,41 @@ const Product = () => {
           </div>
         </div>
       </div>
-      <div className={styles.carouselContainer}>
-        <Carousel
-          className={styles.carousel}
-          cellAlign="center"
-          wrapAround={true}
-          speed={2000}
-          autoplay={true}
-          slidesToShow={3}
-          defaultControlsConfig={{
-            nextButtonText: ' ',
-            prevButtonText: ' ',
-            nextButtonClassName: [
-              styles.buttonCarousel,
-              styles.nextButton,
-            ].join(' '),
-            prevButtonClassName: [
-              styles.buttonCarousel,
-              styles.prevButton,
-            ].join(' '),
-            pagingDotsClassName: styles.dots,
-          }}
-        >
-          <img
-            // onClick={() => console.log('1')}
-            width={'75px'}
-            style={{ cursor: 'pointer' }}
-            src={image.src}
-            alt="img"
-          />
-          <img
-            // onClick={() => console.log('2')}
-            style={{ cursor: 'pointer' }}
-            width={'75px'}
-            src={image.src}
-            alt="img"
-          />
-          <img
-            style={{ cursor: 'pointer' }}
-            width={'75px'}
-            src={image.src}
-            alt="img"
-          />
-        </Carousel>
-      </div>
       <div>
-        <div className={styles.switchContainer}>
-          <span
-            className={
-              active === 0
-                ? [styles.switchActive, styles.switch].join(' ')
-                : styles.switch
-            }
-            onClick={() => setActive(0)}
-          >
-            Описание
-          </span>
-          <span
-            className={
-              active === 1
-                ? [styles.switchActive, styles.switch].join(' ')
-                : styles.switch
-            }
-            onClick={() => setActive(1)}
-          >
-            Условия хранения
-          </span>
-          <span
-            className={
-              active === 2
-                ? [styles.switchActive, styles.switch].join(' ')
-                : styles.switch
-            }
-            onClick={() => setActive(2)}
-          >
-            Доставка
-          </span>
+        <div className={styles.switchLineContainer}>
+          <div className={styles.switchContainer}>
+            <span
+              className={
+                active === 0
+                  ? [styles.switchActive, styles.switch].join(' ')
+                  : styles.switch
+              }
+              onClick={() => setActive(0)}
+            >
+              Описание
+            </span>
+            <span
+              className={
+                active === 1
+                  ? [styles.switchActive, styles.switch].join(' ')
+                  : styles.switch
+              }
+              onClick={() => setActive(1)}
+            >
+              Условия хранения
+            </span>
+            <span
+              className={
+                active === 2
+                  ? [styles.switchActive, styles.switch].join(' ')
+                  : styles.switch
+              }
+              onClick={() => setActive(2)}
+            >
+              Доставка
+            </span>
+          </div>
+          <div className={styles.switchLine}></div>
         </div>
         <div className={styles.switchTextContainer}>
           <div
@@ -325,36 +371,19 @@ const Product = () => {
       </div>
       <div className={styles.offerContainer}>
         {offer.map((product) => (
-          <div key={product.id} className={styles.offerContaine}>
-            <div className={stylesProduct.hoverContainer}>
-              <Link to={`/catalog/${product.link}/${product.id}`}>
-                <Button params={params} addStyles={stylesProduct.buttonHover}>
-                  Подробней
-                </Button>
-              </Link>
-              <img
-                className={stylesProduct.imageHover}
-                style={{ cursor: 'pointer', width: '393px', height: '393px' }}
-                src={product.image.src}
-                alt={product.image.alt}
-              />
-            </div>
-            <div className={stylesProduct.productInfo}>
-              <div className={stylesProduct.titleContainer}>
-                <span className={stylesProduct.productTitle}>
-                  {product.title}
-                </span>
-                <img
-                  style={{ cursor: 'pointer' }}
-                  src={product.cart}
-                  alt="cart"
-                />
-              </div>
-              <span className={stylesProduct.price}>
-                {product.price} руб/ {product.weight}
-              </span>
-            </div>
-          </div>
+          <Item
+            onClick={addToCart}
+            key={product.id}
+            id={product.id}
+            src={product.image.src}
+            alt={product.image.alt}
+            title={product.title}
+            cart={product.cart}
+            cartCount={product.cartCount}
+            price={product.price}
+            weight={product.weight}
+            link={product.link}
+          />
         ))}
       </div>
     </div>

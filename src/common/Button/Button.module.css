@@ -15,5 +15,6 @@
 }
 
 .button:hover {
-  color: rgb(235, 107, 107);
+  color: #f3b251;
+  box-shadow: 0 4px 12px 3px #f7e1b4;
 }

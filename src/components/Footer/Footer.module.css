@@ -35,17 +35,9 @@
   justify-content: space-between;
 }
 
-.tg {
+.tg, .inst {
   transition: .3s;
 }
-
-.inst {
-  transition: .3s;
-}
-
-/* .viber {
-  transition: .3s;
-} */
 
 .tg:hover {
   fill: #28A7E8;
@@ -55,6 +47,41 @@
   fill: #CC426B;
 }
 
-/* .viber:hover {
-  fill: #593EBC;
-} */
+@media screen and (max-width: 1065px) {
+  .container {
+    padding: 60px 30px 120px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .logo {
+    order: 0;
+  }
+
+  .contacts {
+    font-size: 18px;
+    text-align: center;
+    order: 1;
+  }
+
+  .iconsContainer {
+    gap: 40px;
+    margin: 0;
+  }
+
+  .politic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    order:2;
+  }
+
+}

@@ -11,7 +11,7 @@
   margin: 0 auto;
   padding: 53px 205px 55px 100px;
   display: flex;
-  gap: 130px;
+  column-gap: 130px;
 }
 
 .titleContainer {
@@ -26,6 +26,7 @@
   color: #F5F7F8;
   font-family: 'Jeff';
   font-size: 54px;
+  max-width: 100%;
   width: 493px;
   height: 130px;
   line-height: normal;
@@ -34,6 +35,7 @@
 
 .text {
   width: 395px;
+  max-width: 100%;
   color: #F5F7F8;
   font-family: 'Montserrat';
   font-size: 18px;
@@ -46,9 +48,8 @@
   gap: 30px;
 }
 
-.formContainer input {
-  width: 500px;
-  max-width: 100%;
+.input {
+  max-width: 500px;
   height: 60px;
   padding: 20px 30px;
   border-radius: 10px;
@@ -63,4 +64,55 @@
 .formButton {
   width: 500px;
   height: 67px;
+}
+
+@media screen and (max-width: 1240px) {
+  .container {
+    padding: 80px 10px 40px;
+    column-gap: 90px;
+    row-gap: 40px;
+  }
+}
+
+@media screen and (max-width: 1110px){
+  .background {
+    margin: 100px 0;
+  }
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .formButton, .input {
+    width: 355px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 38px;
+    max-width: 360px;
+  }
+
+  .formContainer {
+    gap: 20px;
+  }
+
+  .titleContainer {
+    margin: 0;
+    height: 220px;
+    max-width: 365px;
+    padding: 0 10px;
+  }
+
+  .background {
+    background: url('../../assets/images/form-mobileImage.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
 }

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { increase_product } from '../../reducers/productSlice';
 import { useContext } from 'react';
 import { AppContext } from '../../App';
+import { Item } from '../../common/Item/Item';
 
 const Products = () => {
   const { url } = useParams();
@@ -47,40 +48,19 @@ const Products = () => {
       </nav>
       <div className={styles.productsContainer}>
         {products.map((product) => (
-          <div className={styles.productContainer} key={product.id}>
-            <div className={styles.hoverContainer}>
-              <Link to={`${product.id}`}>
-                <Button addStyles={styles.buttonHover}>Подробней</Button>
-              </Link>
-              <img
-                className={styles.imageHover}
-                width={'393px'}
-                src={product.image.src}
-                alt={product.image.alt}
-              />
-            </div>
-            <div className={styles.productInfo}>
-              <div className={styles.titleContainer}>
-                <span className={styles.productTitle}>{product.title}</span>
-                <div className={styles.toCartContainer}>
-                  <img
-                    id={product.id}
-                    onClick={addToCart}
-                    style={{ cursor: 'pointer' }}
-                    src={product.cart}
-                    alt="cart"
-                  />
-                  {product.cartCount > 0 ? (
-                    <div className={styles.cartCount}>{product.cartCount}</div>
-                  ) : (
-                    ''
-                  )}
-                </div>
-              </div>
-              <div className={styles.price}>
-                {product.price} руб/ {product.weight}
-              </div>
-            </div>
+          <div key={product.id}>
+            <Item
+              id={product.id}
+              src={product.image.src}
+              alt={product.image.alt}
+              title={product.title}
+              cart={product.cart}
+              cartCount={product.cartCount}
+              price={product.price}
+              weight={product.weight}
+              onClick={addToCart}
+              link={link}
+            />
           </div>
         ))}
       </div>

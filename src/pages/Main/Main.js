@@ -1,5 +1,6 @@
 import { Title } from '../../common/Title/Title';
 import styles from './Main.module.css';
+import stylesSlider from '../../components/Slider/Slider.module.css';
 import cake from '../../assets/images/mainCake.png';
 import box from '../../assets/images/box.svg';
 import scooter from '../../assets/images/scooter.svg';
@@ -14,9 +15,9 @@ import { Button } from '../../common/Button/Button';
 import { instImages } from '../../data/instImages';
 import { AppContext } from '../../App';
 import { useContext } from 'react';
+import Carousel from 'nuka-carousel';
 
 const Main = () => {
-  const { ref } = useContext(AppContext);
   return (
     <>
       <Banner />
@@ -34,7 +35,7 @@ const Main = () => {
                 <div className={styles.subtitle}>
                   ВСЕ ИНГРЕДИЕНТЫ СВЕЖИЕ И КАЧЕСТВЕННЫЕ!
                 </div>
-                <span ref={ref} className={styles.text}>
+                <span className={styles.text}>
                   Я заказываю продукты только у поставщиков, которые имеют
                   сертификаты качества.
                 </span>
@@ -65,45 +66,54 @@ const Main = () => {
               </div>
             </div>
           </div>
-          <Title title="Доставка и оплата" addStyles={styles.deliveryTitle} />
-          <div className={styles.deliveryContainer}>
-            <div className={styles.delivery}>
-              <img style={{ marginBottom: '35px' }} src={box} alt="delivery" />
-              <span className={styles.subtitle}>САМОВЫЗОВ</span>
-              <span className={styles.deliveryText}>
-                Самовывоз из Печерского р-на, г. Киев
-              </span>
-            </div>
-            <div className={[styles.delivery, styles.deliveryBorder].join(' ')}>
-              <img
-                style={{ marginBottom: '35px' }}
-                src={scooter}
-                alt="delivery"
-              />
-              <span className={styles.subtitle}>ДОСТАВКА</span>
-              <span className={styles.deliveryText}>
-                Доставка на такси (по тарифам службы такси)
-              </span>
-            </div>
-            <div className={styles.delivery}>
-              <img style={{ marginBottom: '35px' }} src={cash} alt="cash" />
-              <span className={styles.subtitle}>ПРЕДОПЛАТА</span>
-              <span className={styles.deliveryText}>
-                Подписка на карту в размере 50% от суммы заказа
-              </span>
+          <div className={styles.deliveryBackground}>
+            <Title title="Доставка и оплата" addStyles={styles.deliveryTitle} />
+            <div className={styles.deliveryContainer}>
+              <div className={styles.delivery}>
+                <img
+                  style={{ marginBottom: '35px' }}
+                  src={box}
+                  alt="delivery"
+                />
+                <span className={styles.subtitle}>САМОВЫЗОВ</span>
+                <span className={styles.deliveryText}>
+                  Самовывоз из Печерского р-на, г. Киев
+                </span>
+              </div>
+              <div
+                className={[styles.delivery, styles.deliveryBorder].join(' ')}
+              >
+                <img
+                  style={{ marginBottom: '35px' }}
+                  src={scooter}
+                  alt="delivery"
+                />
+                <span className={styles.subtitle}>ДОСТАВКА</span>
+                <span className={styles.deliveryText}>
+                  Доставка на такси (по тарифам службы такси)
+                </span>
+              </div>
+              <div className={styles.delivery}>
+                <img style={{ marginBottom: '35px' }} src={cash} alt="cash" />
+                <span className={styles.subtitle}>ПРЕДОПЛАТА</span>
+                <span className={styles.deliveryText}>
+                  Подписка на карту в размере 50% от суммы заказа
+                </span>
+              </div>
             </div>
           </div>
 
           <div className={styles.aboutContainer}>
+            <Title title="Обо мне" addStyles={styles.aboutTitleMobile} />
             <div>
-              <img src={anna} alt="anna" />
+              <img className={styles.aboutImg} src={anna} alt="anna" />
             </div>
             <div>
               <Title title="Обо мне" addStyles={styles.aboutTitle} />
               <div className={styles.aboutContainerText}>
                 <div className={styles.aboutName}>
                   <span>АННА КОСТРОМА</span>
-                  <span style={{ fontSize: '16px' }}>
+                  <span className={styles.aboutContainerTextInfo}>
                     Основательница кондитерской Grann Pastry
                   </span>
                 </div>
@@ -131,10 +141,48 @@ const Main = () => {
       <div className={styles.instContainer}>
         <div className={styles.imgContainer}>
           {instImages.map((img) => (
-            <div key={img.id}>
-              <img src={img.src} alt="img" />
+            <div style={{ overflow: 'hidden' }} key={img.id}>
+              <img className={styles.instImg} src={img.src} alt="img" />
             </div>
           ))}
+        </div>
+
+        <div className={styles.carouselInst}>
+          <Carousel
+            className={styles.carousel}
+            wrapAround={true}
+            speed={2000}
+            autoplay={true}
+            slidesToShow={1}
+            defaultControlsConfig={{
+              containerClassName: styles.sliderContainer,
+              nextButtonText: ' ',
+              prevButtonText: ' ',
+              nextButtonClassName: [
+                styles.button,
+                stylesSlider.nextButton,
+                styles.position,
+              ].join(' '),
+              prevButtonClassName: [
+                styles.button,
+                stylesSlider.prevButton,
+              ].join(' '),
+              pagingDotsContainerClassName: styles.dotsContainer,
+              nextButtonStyle: {
+                backgroundPosition: 'center ',
+              },
+              prevButtonStyle: {
+                backgroundPosition: 'center ',
+              },
+              pagingDotsClassName: stylesSlider.dots,
+            }}
+          >
+            {instImages.map((img) => (
+              <div style={{ overflow: 'hidden' }} key={img.id}>
+                <img className={styles.instImg} src={img.src} alt="img" />
+              </div>
+            ))}
+          </Carousel>
         </div>
         <Button addStyles={styles.buttonToInst}>Перейти на страницу</Button>
       </div>

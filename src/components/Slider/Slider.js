@@ -1,10 +1,11 @@
 import styles from './Slider.module.css';
-import stylesProduct from '../../pages/Products/Products.module.css';
 import Carousel from 'nuka-carousel';
 import { Title } from '../../common/Title/Title';
 import { Button } from '../../common/Button/Button';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Item } from '../../common/Item/Item';
+
 export const Slider = () => {
   const { products } = useSelector((state) => state.products);
   let array = [];
@@ -28,10 +29,12 @@ export const Slider = () => {
         autoplay={true}
         slidesToShow={3}
         defaultControlsConfig={{
+          containerClassName: styles.sliderContainer,
           nextButtonText: ' ',
           prevButtonText: ' ',
           nextButtonClassName: [styles.button, styles.nextButton].join(' '),
           prevButtonClassName: [styles.button, styles.prevButton].join(' '),
+          pagingDotsContainerClassName: styles.dotsContainer,
           nextButtonStyle: {
             backgroundPosition: 'center ',
           },
@@ -42,34 +45,18 @@ export const Slider = () => {
         }}
       >
         {array.map((product) => (
-          <div key={product.id} className={styles.sliderContainer}>
-            <div className={stylesProduct.hoverContainer}>
-              <Link to={`catalog/${product.productLink}/${product.id}`}>
-                <Button addStyles={stylesProduct.buttonHover}>Подробней</Button>
-              </Link>
-              <img
-                className={stylesProduct.imageHover}
-                style={{ cursor: 'pointer', width: '393px', height: '393px' }}
-                src={product.image.src}
-                alt={product.image.alt}
-              />
-            </div>
-            <div className={stylesProduct.productInfo}>
-              <div className={stylesProduct.titleContainer}>
-                <span className={stylesProduct.productTitle}>
-                  {product.title}
-                </span>
-                <img
-                  style={{ cursor: 'pointer' }}
-                  src={product.cart}
-                  alt="cart"
-                />
-              </div>
-              <span className={stylesProduct.price}>
-                {product.price} руб/ {product.weight}
-              </span>
-            </div>
-          </div>
+          <Item
+            id={product.id}
+            src={product.image.src}
+            alt={product.image.alt}
+            title={product.title}
+            cart={product.cart}
+            cartCount={product.cartCount}
+            price={product.price}
+            weight={product.weight}
+            link={product.productLink}
+            addStyles={styles.containerItem}
+          />
         ))}
       </Carousel>
       <Link to="catalog/cakes">

@@ -1,10 +1,11 @@
-
-.titleContainer {
-
-}
-
 .title {
   color: #705A66;
   font-family: 'Moniqa';
   font-size: 100px;
+}
+
+@media screen and (max-width:900px) {
+  .title {
+    font-size: 80px;
+  }
 }

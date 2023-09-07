@@ -3,36 +3,21 @@ import styles from './Basket.module.css';
 import { useContext, useEffect, useState } from 'react';
 import { Button } from '../../common/Button/Button';
 import { ReactComponent as Cross } from '../../assets/images/crossIcon.svg';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, json } from 'react-router-dom';
 import { AppContext } from '../../App';
 import cart from '../../assets/images/emptyCart.svg';
 import {
-  full_price,
   remove_all_products,
   remove_product,
 } from '../../reducers/productSlice';
+
 const Basket = () => {
   const { products } = useSelector((state) => state.products);
-  const navigate = useNavigate();
-  const { basket, setBasket } = useContext(AppContext);
-  const [basketPrice, setBasketPrice] = useState();
-
-  let basketfullprice = products.forEach((item) => {
-    item.products.reduce((prev, curr) => {
-      return prev + curr.cartPrice;
-    }, 0);
-  });
-  // setBasketPrice(basketfullprice);
-  console.log(basketPrice);
-  useEffect(() => {
-    setBasketPrice(basketfullprice);
-  }, [basket]);
   const dispatch = useDispatch();
-  const { params } = useContext(AppContext);
-  const { Вид, Декор, Вес } = params;
-  // console.log(params);
+  const navigate = useNavigate();
+  const { basket, setBasket, basketPrice } = useContext(AppContext);
 
-  const removeItem = ({ currentTarget }, cartCount) => {
+  const removeItem = ({ currentTarget }) => {
     const { id } = currentTarget;
     const clearBasket = basket.filter((el) => el.id !== +id);
     dispatch(remove_product({ id: id }));
@@ -45,7 +30,7 @@ const Basket = () => {
   };
 
   useEffect(() => {
-    const basketState = [];
+    let basketState = [];
     products.forEach((elem) => {
       elem.products.forEach((el) => {
         if (el.cartCount > 0) {
@@ -54,14 +39,23 @@ const Basket = () => {
         }
       });
     });
+    // let storage = JSON.parse(localStorage.getItem('basket'));
+    // if (storage === null || !storage.length) {
+    //   localStorage.setItem('basket', JSON.stringify(basketState));
+    //   storage = JSON.parse(localStorage.getItem('basket'));
+    // }
     setBasket(basketState);
   }, []);
   console.log(basket);
+  useEffect(() => {
+    let storage = JSON.parse(localStorage.getItem('basket')) || [];
+    if (!storage.length || storage === null) {
+      setBasket([]);
+    } else {
+      setBasket([...storage].filter((item) => item.cartCount > 0));
+    }
+  }, [setBasket]);
 
-  const reduce = ({ currentTarget }) => {
-    // const {id} = currentTarget
-    dispatch(full_price());
-  };
   return (
     <div className={styles.container}>
       {basket.length >= 1 ? (
@@ -92,7 +86,12 @@ const Basket = () => {
             <div className={styles.productContainer}>
               <div className={styles.aboutContainer}>
                 <Link to={`/catalog/${el.link}/${el.id}`}>
-                  <img width={'286px'} src={el.image.src} alt="img" />
+                  <img
+                    className={styles.productImage}
+                    width={'286px'}
+                    src={el.image.src}
+                    alt="img"
+                  />
                 </Link>
                 <div>
                   <span className={styles.title}>{el.title}</span>
@@ -103,24 +102,26 @@ const Basket = () => {
                       <span>Вес:</span>
                     </div>
                     <div className={styles.props}>
-                      <span>{Вид}</span>
-                      <span>{Декор}</span>
-                      <span>{Вес}</span>
+                      <div key={el.id}>
+                        <span>{el.kind}</span>
+                        <span>{el.decor}</span>
+                        <span>{el.helf}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div className={styles.priceContainer}>
                 <span style={{ fontSize: '18px' }}>Ваш заказ:</span>
-                <div style={{ paddingRight: '30px' }}>
+                <div>
                   <div className={styles.price}>
-                    <span> Сумма заказа:</span>
+                    <span> Сумма заказа: </span>
                     <span>
                       {el.price}(x{el.cartCount})
                     </span>
                   </div>
                   <div className={styles.finalPrice}>
-                    <span>Общая сумма:</span>
+                    <span>Общая сумма: </span>
                     <span>{el.cartPrice}</span>
                   </div>
                 </div>
@@ -129,20 +130,23 @@ const Basket = () => {
           </div>
         ))}
       </div>
-      <div className={styles.fullPriceContainer}>
-        <div className={styles.fullPrice}>
-          <div>
-            <span>Итого:</span>
-            <span>{basketPrice}</span>
+      {basket.length >= 1 ? (
+        <div className={styles.fullPriceContainer}>
+          <div className={styles.fullPrice}>
+            <div>
+              <span>Итого: {basketPrice} руб</span>
+            </div>
+            <Button
+              onClick={() => navigate('/form')}
+              addStyles={styles.basketButton}
+            >
+              Оформить
+            </Button>
           </div>
-          <Button
-            onClick={() => navigate('/form')}
-            addStyles={styles.basketButton}
-          >
-            Оформить
-          </Button>
         </div>
-      </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 };

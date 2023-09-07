@@ -57,7 +57,7 @@
 }
 
 .priceContainer {
-  padding: 30px 10px 30px 20px;
+  padding: 30px 30px 30px 20px;
   height: 225px;
   border-radius: 10px;
   background: #F5EEE0;
@@ -67,8 +67,6 @@
 
 .price {
   font-size: 16px;
-  display: flex;
-  justify-content: space-between;
   margin: 30px 0 60px;
 }
 
@@ -131,4 +129,98 @@
   font-size: 22px;
   font-weight: 700;
   color: #705A66;
+}
+
+@media screen and (max-width: 1110px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .propsContainer {
+    font-size: 14px;
+  }
+
+  .productImage {
+    width: 225px;
+    height: 225px;
+  }
+
+  .basketButton {
+    font-size: 18px;
+  }
+
+  .fullPrice {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .container {
+    padding: 30px 10px 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .priceContainer {
+    width: 347px;
+    height: auto;
+  }
+
+  .price {
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .propsContainer {
+    padding: 40px 0 0 0;
+  }
+
+  .aboutContainer {
+    gap: 20px;
+  }
+
+  .productImage  {
+    width: 168px;
+    height: 176px;
+  }
+
+  .productContainer {
+    flex-direction: column;
+    gap: 40px;
+    padding: 0;
+  }
+
+  .fullPrice {
+    flex-direction: column;
+    gap: 25px;
+    height: auto;
+    width: auto;
+  }
+
+  .crossContainer {
+    margin: 0 0 15px 0 !important;
+  }
+
+  .removeContainer {
+    margin-bottom: 40px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .emptyBasket {
+    padding: 30px 0;
+    height: 350px;
+  }
+
+  .emptyBasketText {
+    font-size: 45px;
+  }
+}
+
+@media screen and (max-width:410px) {
+  .crossContainer {
+    max-width: 380px;
+  }
 }

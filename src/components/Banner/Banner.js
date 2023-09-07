@@ -4,13 +4,19 @@ import { ReactComponent as Telegram } from '../../assets/images/telegram.svg';
 import { Button } from '../../common/Button/Button';
 import { ReactComponent as Instagram } from '../../assets/images/instagram.svg';
 import { ReactComponent as Facebook } from '../../assets/images/facebook.svg';
-import { Link, useParams } from 'react-router-dom';
-import { initialState } from '../../data/initialState';
+import { Link, useNavigate } from 'react-router-dom';
+
 export const Banner = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.banner}>
       <div className={styles.mainPicture}>
-        <img width={'831px'} src={bisquit} alt="bisquit" />
+        <img
+          style={{ maxWidth: '100%' }}
+          width={'831px'}
+          src={bisquit}
+          alt="bisquit"
+        />
       </div>
       <div className={styles.bannerContainer}>
         <div className={styles.titleContainer}>
@@ -18,8 +24,11 @@ export const Banner = () => {
           <span className={styles.underTitle}>Авторский десерт</span>
         </div>
 
-        <Button addStyles={styles.button}>
-          <Link to="/catalog/cakes">К каталогу</Link>
+        <Button
+          onClick={() => navigate('/catalog/cakes')}
+          addStyles={styles.button}
+        >
+          К каталогу
         </Button>
         <div className={styles.socialMedia}>
           <Link to="#">

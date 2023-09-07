@@ -1,0 +1,26 @@
+.container {
+  display: none;
+  padding: 10px;
+}
+
+.burger {
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor:pointer;
+}
+
+.tile {
+  width: 22px;
+  height: 100%;
+  height: 3px;
+  border-radius: 1.5px;
+  background: #705A66;
+}
+
+@media screen and (max-width:790px) {
+  .container {
+    display: block;
+  }
+}

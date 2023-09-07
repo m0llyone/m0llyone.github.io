@@ -12,16 +12,25 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  width: 1104px;
 }
 
 .logoContainer {
-  margin:0 170px 0 275px ;
+  margin: 0 170px 0 275px ;
 }
 
 .linkContainer {
   width: 287px;
-  height: 20px;
   max-width: 100%;
+  height: 20px;
+  /* gap: 86px; */
   display: flex;
   justify-content: space-between;
 }
@@ -30,15 +39,9 @@
   text-decoration: none;
   color: #705A66;
   text-align: center;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 300;
+  font-family: 'Montserrat';
+  font-size: 16px;;
   text-transform: uppercase;
-}
-
-.cart {
-  margin-left: 76px;
 }
 
 .socialMedia {
@@ -48,10 +51,24 @@
   height: 110px;
 }
 
-.basket {
-  position: relative;
+.burgerImage {
+  display: none;
 }
 
+.crossIcon {
+  display: none;
+}
+
+.logoContainer_2 {
+  display: none;
+}
+
+ .basket {
+  width: 95px;
+  display: flex;
+  justify-content: end;
+}
+/*
 .count {
   position: absolute;
   top: -12px;
@@ -62,4 +79,109 @@
   color:white ;
   font-family: 'Montserrat';
   font-size: 14px;
+} */
+
+
+@media screen and (max-width:790px) {
+  .navContainer {
+    height: 100%;
+    background-color: #705A66;
+    color: #3b4246;
+    flex-direction: column;
+    display: flex;
+    gap: 30px;
+    transform:translateX(100%) ;
+    transition: all 0.3s;
+    padding: 30px 20px 0 40px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 51;
+    align-items: normal;
+  }
+
+  .headerContainer {
+    justify-content: flex-end;
+    padding: 20px 16px;
+  }
+
+  .logoContainer_2 {
+      display: block;
+    }
+
+  .linkContainer {
+    flex-direction: column;
+    gap: 30px;
+    width: 143px;
+    height: 74px;
+  }
+
+  .crossIconContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 22px;
+  }
+
+  .crossIcon {
+    display: block;
+    fill: #F5F7F8;
+    height: 33px;
+    width: 33px;
+  }
+
+  .logoContainer {
+    display: none;
+  }
+
+  .burgerImageContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .burgerImage {
+    display: flex;
+    justify-content: center;
+    width: 192px;
+    height: 191px;
+    margin-top: 85px;
+  }
+
+  .basket {
+    margin-left: 30px;
+    justify-content: space-between;
+  }
+
+  .cart {
+    margin-left: 0;
+  }
+
+  .link {
+    color: #F5F7F8;
+    font-size: 18px;
+  }
+
+  .active {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width:1360px) {
+  .logoContainer {
+    margin: 0 15%;
+  }
+}
+
+@media screen and (max-width:1054px) {
+ .headerContainer {
+  padding: 20px 40px;
+ }
+ .link {
+  font-size: 14px;
+ }
+
+ .logo {
+  width: 90px;
+  height: 66px;
+ }
 }

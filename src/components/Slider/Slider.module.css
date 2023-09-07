@@ -1,12 +1,12 @@
 .container {
   max-width: 1440px;
   margin: 0 auto;
+  padding: 0 10px;
+
 }
 
 .sliderContainer {
-  display: flex;
-  flex-direction: column;
-  margin-right: 30px;
+  position: relative;
 }
 
 .dots {
@@ -22,8 +22,11 @@
   display: flex;
 }
 
+.containerItem {
+  margin-right: 30px;
+}
 
-.button{
+.button {
   display: flex;
   margin-top: -320px;
   outline: none;
@@ -41,7 +44,7 @@
   background-image: url('../../assets/images/arrowRight.svg') !important;
 }
 
-.prevButton{
+.prevButton {
   margin-left: 1160px;
   background-image: url('../../assets/images/arrowLeft.svg') !important;
 }
@@ -55,3 +58,58 @@
 .button:hover {
   background-color: #F5EEE0 !important;
 }
+
+@media screen and (max-width: 1425px) {
+  .nextButton {
+    margin-right: 10px;
+  }
+
+  .prevButton {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width:1210px) {
+  .button {
+    margin-top: -200px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .buttonView {
+    max-width: 355px;
+    font-size: 18px !important;
+  }
+
+  .dots {
+    display: block;
+    background-color: #F5EEE0 !important;
+    border-radius: 50%;
+    fill: #F5EEE0 !important;
+    width: 11px;
+    height: 11px;
+  }
+
+  .dotsContainer {
+    display: flex;
+    gap: 20px;
+    max-width: 104px;
+    margin-top: -50px !important;
+  }
+
+  .button {
+    margin-top: 0;
+    position: absolute;
+    bottom: -163px;
+  }
+
+  .nextButton {
+    position: absolute;
+    right: 0;
+  }
+}
+
+
+ @media screen and (max-width: 555px) {
+
+ }

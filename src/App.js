@@ -1,31 +1,53 @@
-import { Route, Routes, useLocation, redirect } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import './App.css';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { routes } from './data/routes';
-import { createContext, useContext } from 'react';
-import { useState, useRef } from 'react';
-import { parametres } from './pages/Product/Product';
+import { useState, useEffect, createContext } from 'react';
+import { useSelector } from 'react-redux';
+import Preloader from './common/Preloader/Preloader';
 export const AppContext = createContext();
+
 function App() {
-  const [params, setParams] = useState(parametres);
   const [basket, setBasket] = useState([]);
+  const [basketPrice, setBasketPrice] = useState();
   const [modal, setModal] = useState(false);
   const [counter, setCounter] = useState(0);
-  const ref = useRef(null);
+  const { status } = useSelector((state) => state.weather);
+  let basketfullprice = basket.reduce((prev, curr) => {
+    return prev + curr.cartPrice;
+  }, 0);
+
+  useEffect(() => {
+    setBasketPrice(basketfullprice);
+  }, [basket]);
+
+  useEffect(() => {
+    const storage = JSON.parse(localStorage.getItem('basket'));
+    if (storage === null || !storage.length) {
+      localStorage.setItem('basket', JSON.stringify(basket));
+    } else {
+      setBasket([...storage]);
+    }
+  }, []);
+
+  if (status === 'loading') {
+    return <Preloader />;
+  }
+
   return (
     <div className="App">
+      {/* <Preloader /> */}
       <AppContext.Provider
         value={{
-          params,
-          setParams,
+          basketPrice,
+          setBasketPrice,
           basket,
           setBasket,
           modal,
           setModal,
           counter,
           setCounter,
-          ref,
         }}
       >
         <Header />

@@ -4,43 +4,47 @@ import shu from '../../assets/images/shu.png';
 import brownie from '../../assets/images/brownie.png';
 import cake from '../../assets/images/cake.png';
 import { Button } from '../../common/Button/Button';
-import { useLocation, NavLink, useParams } from 'react-router-dom';
-import { initialState } from '../../data/initialState';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export const Navigation = () => {
-  const { pathname } = useLocation();
-  const { products } = initialState;
-  const { url } = useParams();
+  const navigate = useNavigate();
   return (
     <div className={styles.container}>
       <div className={styles.nav}>
         <div className={styles.linkContainer}>
           <img src={cake} alt="cake" />
-          <Link to="catalog/cakes">
-            <Button addStyles={styles.button}>Торты</Button>
-          </Link>
+          <Button
+            onClick={() => navigate('catalog/cakes')}
+            addStyles={styles.button}
+          >
+            Торты
+          </Button>
         </div>
         <div className={styles.linkContainer}>
           <img src={shu} alt="shu" />
-          <Link to="catalog/shu">
-            <Button addStyles={styles.button}>Шу</Button>
-          </Link>
+          <Button
+            onClick={() => navigate('catalog/shu')}
+            addStyles={styles.button}
+          >
+            Шу
+          </Button>
         </div>
         <div className={styles.linkContainer}>
           <img src={brownie} alt="brownie" />
-          <Link to="catalog/brownie">
-            <Button addStyles={[styles.button, styles.buttonMargin].join(' ')}>
-              Пирожное
-            </Button>
-          </Link>
+          <Button
+            onClick={() => navigate('catalog/brownie')}
+            addStyles={[styles.button, styles.buttonMargin].join(' ')}
+          >
+            Пирожное
+          </Button>
         </div>
         <div className={styles.linkContainer}>
           <img src={pizza} alt="pizza" />
-          <Link to="catalog/pizza">
-            <Button addStyles={[styles.button, styles.buttonMargin].join(' ')}>
-              Пицца
-            </Button>
-          </Link>
+          <Button
+            onClick={() => navigate('catalog/pizza')}
+            addStyles={[styles.button, styles.buttonMargin].join(' ')}
+          >
+            Пицца
+          </Button>
         </div>
       </div>
     </div>

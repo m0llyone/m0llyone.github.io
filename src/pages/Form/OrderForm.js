@@ -3,11 +3,13 @@ import { Title } from '../../common/Title/Title';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import cake from '../../assets/images/mainCake.png';
-import cross from '../../assets/images/crossIcon.svg';
+import { ReactComponent as Cross } from '../../assets/images/crossIcon.svg';
 import { Button } from '../../common/Button/Button';
 import { useValidate } from './useValidate/useValidate';
 import { Modal } from '../../common/Modal/Modal';
 import { AppContext } from '../../App';
+import { useDispatch } from 'react-redux';
+import { remove_product } from '../../reducers/productSlice';
 const initialState = {
   name: '',
   phone: '',
@@ -31,8 +33,13 @@ const OrderForm = () => {
   const { error, validate } = useValidate();
   const [active, setActive] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
-  const { modal, setModal } = useContext(AppContext);
+  const { modal, setModal, basket, setBasket, basketPrice } =
+    useContext(AppContext);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {});
+
   const handleChange = ({ target }) => {
     const { name, value, id, type, checked } = target;
     const stateValue = type === 'checkbox' ? checked : value;
@@ -59,15 +66,23 @@ const OrderForm = () => {
     }
   };
 
+  const removeItem = ({ currentTarget }) => {
+    const { id } = currentTarget;
+    const clearBasket = basket.filter((el) => el.id !== +id);
+    dispatch(remove_product({ id: id }));
+    // localStorage.removeItem('basket', id);
+    setBasket(clearBasket);
+  };
+
   return (
     <div className={styles.container}>
       <Link className={styles.link} to="/catalog/cakes">
         Продолжить покупки
       </Link>
       <Title addStyles={styles.mainTitle} title="Оформление заказа" />
-      <pre styles={{ padding: '20px', background: 'white' }}>
+      {/* <pre styles={{ padding: '20px', background: 'white' }}>
         {JSON.stringify(state, null, 2)}
-      </pre>
+      </pre> */}
       <div className={styles.mainContainer}>
         <form onSubmit={handleSubmit}>
           <div className={styles.inputContainer}>
@@ -125,11 +140,9 @@ const OrderForm = () => {
             <div>
               <div className={styles.inputGroup}>
                 <input
-                  className={styles.formInput}
+                  className={[styles.formInput, styles.formInputDate].join(' ')}
                   placeholder=" "
-                  type="text"
-                  // onFocus="this.type = 'date'"
-                  // onBlur="this.type = 'text'"
+                  type="date"
                   name="date"
                   value={state.date}
                   onChange={handleChange}
@@ -204,15 +217,14 @@ const OrderForm = () => {
             </div>
           </div>
           <div>
-            <div style={{ marginTop: '5px' }} className={styles.inputGroup}>
+            <div className={styles.inputGroup}>
               <select
-                style={{ maxWidth: '394px' }}
                 // id="streetPickUp"
                 // name="address"
                 // value={state.address.streetPickUp}
                 id="place"
-                placeholder="Место"
-                // className={styles.formInput}
+                placeholder=" "
+                className={[styles.formInput, styles.formSelect].join(' ')}
                 name="place"
                 value={state.address.flat}
                 onChange={handleChange}
@@ -243,7 +255,10 @@ const OrderForm = () => {
                       style={{ maxWidth: '182px' }}
                       placeholder=" "
                       id="street"
-                      className={styles.formInput}
+                      className={[
+                        styles.formInput,
+                        styles.formInputAddress,
+                      ].join(' ')}
                       name="address"
                       type="text"
                       value={state.address.street}
@@ -263,7 +278,10 @@ const OrderForm = () => {
                       style={{ maxWidth: '182px' }}
                       placeholder=" "
                       id="house"
-                      className={styles.formInput}
+                      className={[
+                        styles.formInput,
+                        styles.formInputAddress,
+                      ].join(' ')}
                       name="address"
                       type="text"
                       value={state.address.house}
@@ -282,7 +300,9 @@ const OrderForm = () => {
                     style={{ maxWidth: '182px' }}
                     placeholder=" "
                     id="entrance"
-                    className={styles.formInput}
+                    className={[styles.formInput, styles.formInputAddress].join(
+                      ' '
+                    )}
                     name="address"
                     type="text"
                     value={state.address.entrance}
@@ -298,7 +318,9 @@ const OrderForm = () => {
                     style={{ maxWidth: '182px' }}
                     placeholder=" "
                     id="housing"
-                    className={styles.formInput}
+                    className={[styles.formInput, styles.formInputAddress].join(
+                      ' '
+                    )}
                     name="address"
                     type="text"
                     value={state.address.housing}
@@ -314,7 +336,10 @@ const OrderForm = () => {
                       style={{ maxWidth: '182px' }}
                       placeholder=" "
                       id="flat"
-                      className={styles.formInput}
+                      className={[
+                        styles.formInput,
+                        styles.formInputAddress,
+                      ].join(' ')}
                       name="address"
                       type="text"
                       value={state.address.flat}
@@ -333,7 +358,9 @@ const OrderForm = () => {
                     style={{ maxWidth: '182px' }}
                     placeholder=" "
                     id="floor"
-                    className={styles.formInput}
+                    className={[styles.formInput, styles.formInputAddress].join(
+                      ' '
+                    )}
                     name="address"
                     type="text"
                     value={state.address.floor}
@@ -396,7 +423,7 @@ const OrderForm = () => {
           <div className={styles.priceContainer}>
             <span className={styles.formTitle}>Всего к оплате:</span>
             <div style={{ fontWeight: '700' }} className={styles.formTitle}>
-              000
+              {basketPrice} руб
             </div>
           </div>
           <Button
@@ -438,11 +465,24 @@ const OrderForm = () => {
         <div className={styles.orderContainer}>
           <span style={{ fontSize: '18px' }}>Ваш заказ:</span>
           <div className={styles.orderTitle}>
-            <span>title</span>
-            <div className={styles.price}>
-              <span>price</span>
-              <img width={'13px'} height={'13px'} src={cross} alt="cross" />
-            </div>
+            {basket.map((el) => (
+              <div key={el.id} className={styles.orderName}>
+                <span>{el.title}</span>
+                <div className={styles.price}>
+                  <span>
+                    {el.price} (x{el.cartCount})
+                  </span>
+                  <div id={el.id} onClick={removeItem}>
+                    <Cross
+                      style={{ cursor: 'pointer' }}
+                      fill="#705A66"
+                      width={'13px'}
+                      height={'13px'}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

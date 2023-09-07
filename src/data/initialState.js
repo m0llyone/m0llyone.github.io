@@ -21,7 +21,9 @@ export const initialState = [
         },
         weight: '3кг',
         cart: cart,
-        isShow: true,
+        kind: '',
+        decor: '',
+        heft: '',
       },
 
       {

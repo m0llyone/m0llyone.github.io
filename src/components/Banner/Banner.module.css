@@ -16,7 +16,7 @@
   height: 236px;
   position: absolute;
   top: 100px;
-  right: 330px;
+  right: 318px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -25,7 +25,7 @@
 .title {
   color: #705A66;
   font-family: 'Moniqa';
-  font-size: 226.448px;
+  font-size: 226px;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
@@ -55,13 +55,14 @@
 
 .socialMedia {
   position: absolute;
-  right: 0;
+  right: 0%;
   top: 553px;
   width: 24px;
   height: 110px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-right: 10px;
 }
 
 .socialMedia img {
@@ -74,15 +75,7 @@
   z-index: 1;
 }
 
-.tg {
-  transition: .3s;
-}
-
-.inst {
-  transition: .3s;
-}
-
-.facebook {
+.tg, .facebook, .inst {
   transition: .3s;
 }
 
@@ -96,4 +89,104 @@
 
 .inst:hover {
   fill: #CC426B;
+}
+
+@media screen and (max-width:1280px) {
+  .titleContainer {
+    top: 75px;
+  }
+
+  .mainPicture {
+    left: -150px;
+  }
+
+  .button {
+    left: 400px;
+  }
+}
+
+@media screen and (max-width:1120px) {
+  .title {
+    font-size: 175px;
+  }
+
+  .underTitle {
+    font-size: 22px;
+  }
+
+  .button {
+    left: 300px;
+  }
+}
+
+@media screen and (max-width:965px) {
+  .bannerContainer {
+    height: 640px;
+  }
+
+  .mainPicture img {
+    height: 400px;
+    width: 680px;
+  }
+
+  .button {
+    left: 250px;
+  }
+
+  .socialMedia {
+    top: 292px;
+  }
+
+  .button {
+    top: 525px;
+    left: 27%;
+  }
+}
+
+@media screen and (max-width:766px) {
+  .bannerContainer {
+    height: 592px;
+  }
+
+  .titleContainer {
+    display: flex;
+    align-items: center;
+    left: 35%;
+    width: 255px;
+  }
+
+  .mainPicture {
+    top: 231px;
+    left: -250px;
+  }
+
+  .mainPicture img {
+    height: 340px;
+    width: 544px;
+  }
+
+  .underTitle {
+    font-size: 18px;
+    margin-top: -12px;
+  }
+
+  .title {
+    font-size: 120px;
+  }
+
+  .button {
+    width: 355px;
+    font-size: 18px;
+    left: 100px;
+  }
+}
+
+@media screen and (max-width:476px) {
+  .titleContainer {
+    left: 60px;
+  }
+
+  .button {
+    left: 10px;
+  }
 }

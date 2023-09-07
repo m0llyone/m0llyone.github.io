@@ -4,8 +4,12 @@ import { ReactComponent as Viber } from '../../assets/images/viber.svg';
 import { ReactComponent as Instagram } from '../../assets/images/instagram.svg';
 import { ReactComponent as Telegram } from '../../assets/images/telegram.svg';
 import { Link } from 'react-router-dom';
+import { Weather } from '../../common/Weather/Weather';
+import { useSelector } from 'react-redux';
 
 export const Footer = () => {
+  const { weather } = useSelector((state) => state.weather);
+  console.log(weather);
   return (
     <div className={styles.background}>
       <div className={styles.container}>
@@ -15,10 +19,11 @@ export const Footer = () => {
           <span>Тел: +375(29) 777 77 77</span>
         </div>
         <div>
-          <img width={'255px'} src={logo} alt="logo" />
+          <img className={styles.logo} width={'255px'} src={logo} alt="logo" />
+          <Weather />
         </div>
 
-        <div>
+        <div className={styles.politic}>
           <div className={styles.iconsContainer}>
             <Link to="#">
               <Instagram

@@ -35,6 +35,7 @@ export const Form = () => {
         </div>
         <form onSubmit={handleSubmit} className={styles.formContainer}>
           <input
+            className={styles.input}
             placeholder="Имя"
             type="text"
             name="name"
@@ -42,6 +43,7 @@ export const Form = () => {
             onChange={handleChange}
           />
           <input
+            className={styles.input}
             type="text"
             placeholder="Телефон"
             name="phone"
@@ -49,6 +51,7 @@ export const Form = () => {
             onChange={handleChange}
           />
           <input
+            className={styles.input}
             type="text"
             style={{ height: '180px' }}
             placeholder="Опишите ваши пожелания: "
@@ -59,9 +62,6 @@ export const Form = () => {
           <Button addStyles={styles.formButton}>Отправить</Button>
         </form>
       </div>
-      {/* <pre style={{ padding: '20px', background: 'white' }}>
-        {JSON.stringify(state, null, 2)}
-      </pre> */}
     </div>
   );
 };
