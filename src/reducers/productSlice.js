@@ -122,7 +122,7 @@ const productSlice = createSlice({
           });
         }
       });
-      let storage = JSON.parse(localStorage.getItem('basket'));
+      let storage = JSON.parse(localStorage.getItem('props'));
       state.products.forEach((product) => {
         if (product.link === link) {
           storage.forEach((elem) => {
@@ -132,7 +132,7 @@ const productSlice = createSlice({
           });
         }
       });
-      localStorage.setItem('basket', JSON.stringify(storage));
+      localStorage.setItem('props', JSON.stringify(storage));
     },
   },
 });

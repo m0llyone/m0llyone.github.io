@@ -275,6 +275,15 @@
   color: #F5EEE0;
 }
 
+.disabled {
+  cursor: auto;
+}
+
+.disabled:hover {
+  color: #705A66;
+  box-shadow: none;
+}
+
 @media screen and (max-width: 1210px) {
   .orderContainer {
     padding: 45px 20px 64px;

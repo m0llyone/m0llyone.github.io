@@ -13,6 +13,7 @@ function App() {
   const [basketPrice, setBasketPrice] = useState();
   const [modal, setModal] = useState(false);
   const [counter, setCounter] = useState(0);
+  const [props, setProps] = useState([]);
   const { status } = useSelector((state) => state.weather);
   let basketfullprice = basket.reduce((prev, curr) => {
     return prev + curr.cartPrice;
@@ -23,9 +24,18 @@ function App() {
   }, [basket]);
 
   useEffect(() => {
-    const storage = JSON.parse(localStorage.getItem('basket'));
+    const storage = JSON.parse(localStorage.getItem('props'));
     if (storage === null || !storage.length) {
-      localStorage.setItem('basket', JSON.stringify(basket));
+      localStorage.setItem('props', JSON.stringify(props));
+    } else {
+      setProps([...storage]);
+    }
+  }, []);
+
+  useEffect(() => {
+    const storage = JSON.parse(localStorage.getItem('props'));
+    if (storage === null || !storage.length) {
+      localStorage.setItem('props', JSON.stringify(props));
     } else {
       setBasket([...storage]);
     }
@@ -47,6 +57,8 @@ function App() {
           setModal,
           counter,
           setCounter,
+          props,
+          setProps,
         }}
       >
         <Header />

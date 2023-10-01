@@ -15,7 +15,8 @@ const Basket = () => {
   const { products } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { basket, setBasket, basketPrice } = useContext(AppContext);
+  const { basket, setBasket, basketPrice, props, setProps } =
+    useContext(AppContext);
 
   const removeItem = ({ currentTarget }) => {
     const { id } = currentTarget;
@@ -32,14 +33,15 @@ const Basket = () => {
   useEffect(() => {
     let basketState = [];
     products.forEach((elem) => {
+      const { link } = elem;
       elem.products.forEach((el) => {
         if (el.cartCount > 0) {
-          el = { ...el, link: elem.link };
+          el = { ...el, link: link };
           basketState.push(el);
         }
       });
+      console.log(link);
     });
-
     setBasket(basketState);
   }, []);
 
@@ -51,6 +53,14 @@ const Basket = () => {
       setBasket([...storage].filter((item) => item.cartCount > 0));
     }
   }, [setBasket]);
+  useEffect(() => {
+    let storage = JSON.parse(localStorage.getItem('props')) || [];
+    if (!storage.length || storage === null) {
+      setProps([]);
+    } else {
+      setProps([...storage].filter((item) => item.cartCount > 0));
+    }
+  }, [setProps]);
 
   return (
     <div className={styles.container}>

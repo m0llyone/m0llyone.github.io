@@ -22,7 +22,6 @@ const Product = () => {
   let product = products.find((el) => el.id === +id);
   const { title, price, image, cartCount } = product;
   const { setModal } = useContext(AppContext);
-  // const [params, setParams] = useState(product);
 
   let offer = [];
   state.forEach((item) => {

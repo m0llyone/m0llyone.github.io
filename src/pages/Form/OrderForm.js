@@ -419,7 +419,11 @@ const OrderForm = () => {
           </div>
           <Button
             disabled={isDisabled}
-            addStyles={styles.formButton}
+            addStyles={
+              isDisabled
+                ? [styles.formButton, styles.disabled].join(' ')
+                : styles.formButton
+            }
             onClick={(e) => {
               e.preventDefault();
               handleSubmit(e);

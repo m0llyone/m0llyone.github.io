@@ -26,8 +26,9 @@ export const Slider = () => {
         cellAlign="center"
         wrapAround={true}
         speed={2000}
+        pauseOnHover={true}
         autoplay={true}
-        slidesToShow={3}
+        slidesToShow={window.document.documentElement.clientWidth < 550 ? 2 : 3}
         defaultControlsConfig={{
           containerClassName: styles.sliderContainer,
           nextButtonText: ' ',
@@ -45,18 +46,20 @@ export const Slider = () => {
         }}
       >
         {array.map((product) => (
-          <Item
-            id={product.id}
-            src={product.image.src}
-            alt={product.image.alt}
-            title={product.title}
-            cart={product.cart}
-            cartCount={product.cartCount}
-            price={product.price}
-            weight={product.weight}
-            link={product.productLink}
-            addStyles={styles.containerItem}
-          />
+          <div className={styles.itemContainer} key={product.id}>
+            <Item
+              id={product.id}
+              src={product.image.src}
+              alt={product.image.alt}
+              title={product.title}
+              cart={product.cart}
+              cartCount={product.cartCount}
+              price={product.price}
+              weight={product.weight}
+              link={product.productLink}
+              addStyles={styles.containerItem}
+            />
+          </div>
         ))}
       </Carousel>
       <Link to="catalog/cakes">
