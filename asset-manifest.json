@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/GRANN/static/css/main.b64ce7ca.css",
-    "main.js": "/GRANN/static/js/main.1bfd449c.js",
+    "main.js": "/GRANN/static/js/main.41c75829.js",
     "static/media/burgerImage.svg": "/GRANN/static/media/burgerImage.9a45f3c0ca69bafc1372aa8b6c6ea6d5.svg",
     "static/media/form-mobileImage.svg": "/GRANN/static/media/form-mobileImage.62b420233219f45c43d3.svg",
     "static/media/margarita.png": "/GRANN/static/media/margarita.2edb08f92ab5c38a9ca2.png",
@@ -47,10 +47,10 @@
     "static/media/arrowLeft.svg": "/GRANN/static/media/arrowLeft.d58aab8dfb32aeefc81f.svg",
     "static/media/arrowRight.svg": "/GRANN/static/media/arrowRight.cb74b2d2272b85b0d77f.svg",
     "main.b64ce7ca.css.map": "/GRANN/static/css/main.b64ce7ca.css.map",
-    "main.1bfd449c.js.map": "/GRANN/static/js/main.1bfd449c.js.map"
+    "main.41c75829.js.map": "/GRANN/static/js/main.41c75829.js.map"
   },
   "entrypoints": [
     "static/css/main.b64ce7ca.css",
-    "static/js/main.1bfd449c.js"
+    "static/js/main.41c75829.js"
   ]
 }
