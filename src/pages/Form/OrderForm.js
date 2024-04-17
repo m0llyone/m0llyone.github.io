@@ -10,6 +10,7 @@ import { Modal } from '../../common/Modal/Modal';
 import { AppContext } from '../../App';
 import { useDispatch } from 'react-redux';
 import { remove_product } from '../../reducers/productSlice';
+import { easeOut, motion } from 'framer-motion';
 const initialState = {
   name: '',
   phone: '',
@@ -71,7 +72,13 @@ const OrderForm = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15, ease: easeOut }}
+    >
       <Link className={styles.link} to="/catalog/cakes">
         Продолжить покупки
       </Link>
@@ -481,7 +488,7 @@ const OrderForm = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,8 +1,16 @@
 import styles from './Button.module.css';
 
-export const Button = ({ id, onClick, addStyles, children, params }) => {
+export const Button = ({
+  id,
+  onClick,
+  addStyles,
+  children,
+  params,
+  disabled,
+}) => {
   return (
     <button
+      disabled={disabled}
       id={id}
       onClick={onClick}
       params={params}

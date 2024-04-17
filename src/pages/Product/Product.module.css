@@ -243,11 +243,23 @@
   height: 55px;
 }
 
+.buttonToCartDisable {
+  box-shadow: none !important;
+  color: #705A66 !important;
+  cursor: default;
+}
+
 .imageProduct {
   max-width: 100%;
   min-width: 355px;
   width: 500px;
   height: 522px;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.imageProduct:hover {
+  transform: scale(1.1);
 }
 
 .carouselImage {

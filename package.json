@@ -2,12 +2,13 @@
   "name": "grann",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://m0llyone.github.io/GRANN/",
+  "homepage": "https://m0llyone.github.io/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "framer-motion": "^10.16.4",
     "gh-pages": "^6.0.0",
     "nuka-carousel": "^6.0.3",
     "react": "^18.2.0",
@@ -16,6 +17,7 @@
     "react-router-dom": "^6.14.1",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

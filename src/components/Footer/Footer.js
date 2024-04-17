@@ -5,9 +5,10 @@ import { ReactComponent as Instagram } from '../../assets/images/instagram.svg';
 import { ReactComponent as Telegram } from '../../assets/images/telegram.svg';
 import { Link } from 'react-router-dom';
 import { Weather } from '../../common/Weather/Weather';
-import { useSelector } from 'react-redux';
+import { memo, useMemo } from 'react';
 
-export const Footer = () => {
+let Footer = () => {
+  console.log('Footer');
   return (
     <div className={styles.background}>
       <div className={styles.container}>
@@ -56,3 +57,5 @@ export const Footer = () => {
     </div>
   );
 };
+
+export default Footer = memo(Footer);

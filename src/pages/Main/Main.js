@@ -14,10 +14,15 @@ import { Slider } from '../../components/Slider/Slider';
 import { Button } from '../../common/Button/Button';
 import { instImages } from '../../data/instImages';
 import Carousel from 'nuka-carousel';
-
+import { easeOut, motion } from 'framer-motion';
 const Main = () => {
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15, ease: easeOut }}
+    >
       <Banner />
       <Navigation />
       <Slider />
@@ -184,7 +189,7 @@ const Main = () => {
         </div>
         <Button addStyles={styles.buttonToInst}>Перейти на страницу</Button>
       </div>
-    </>
+    </motion.div>
   );
 };
 

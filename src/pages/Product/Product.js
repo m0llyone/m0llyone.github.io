@@ -2,17 +2,15 @@ import styles from './Product.module.css';
 import { useParams } from 'react-router-dom';
 import { Button } from '../../common/Button/Button';
 import { Link } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Carousel from 'nuka-carousel';
 import { AppContext } from '../../App';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  add_props_product,
-  decrease_price,
-  increase_product,
-} from '../../reducers/productSlice';
+import { decrease_price, increase_product } from '../../reducers/productSlice';
+import { add_props_product } from '../../reducers/productSlice';
 import { Modal } from '../../common/Modal/Modal';
 import { Item } from '../../common/Item/Item';
+import { motion, easeOut } from 'framer-motion';
 
 const Product = () => {
   const { url, id } = useParams();
@@ -22,6 +20,16 @@ const Product = () => {
   let product = products.find((el) => el.id === +id);
   const { title, price, image, cartCount } = product;
   const { setModal } = useContext(AppContext);
+  const [disabled, setDisabled] = useState(false);
+  const { setValue, value, setBasket, basket } = useContext(AppContext);
+
+  useEffect(() => {
+    if (cartCount !== 0) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [cartCount]);
 
   let offer = [];
   state.forEach((item) => {
@@ -34,7 +42,8 @@ const Product = () => {
   });
 
   const handleChange = ({ target }) => {
-    const { id, name, value } = target;
+    const { id, name } = target;
+    setValue({ ...value, [name]: target.value });
     dispatch(
       add_props_product({
         id: id,
@@ -44,6 +53,16 @@ const Product = () => {
       })
     );
   };
+  console.log(product);
+
+  // useEffect(() => {
+  //   let storage = JSON.parse(localStorage.getItem('basket')) || [];
+  //   if (!storage.length || storage === null) {
+  //     setBasket([]);
+  //   } else {
+  //     setBasket([...storage].filter((item) => item.cartCount > 0));
+  //   }
+  // }, [setBasket]);
 
   const dispatch = useDispatch();
 
@@ -65,7 +84,13 @@ const Product = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15, ease: easeOut }}
+    >
       <div>
         <Link className={styles.path} to={'/'}>
           Главная /{' '}
@@ -78,11 +103,13 @@ const Product = () => {
       <div className={styles.productContainer}>
         <div className={styles.titleMobile}>{title}</div>
         <div className={styles.productCarousel}>
-          <img
-            className={styles.imageProduct}
-            src={image.src}
-            alt={image.alt}
-          />
+          <div style={{ overflow: 'hidden' }}>
+            <img
+              className={styles.imageProduct}
+              src={image.src}
+              alt={image.alt}
+            />
+          </div>
 
           <div className={styles.carouselContainer}>
             <Carousel
@@ -128,7 +155,12 @@ const Product = () => {
             </div>
             <div className={styles.selectContainer}>
               <div className={styles.select}>
-                <select onChange={handleChange} name="kind" id={id}>
+                <select
+                  onChange={handleChange}
+                  name="kind"
+                  value={value.kind}
+                  id={id}
+                >
                   <option value="">Вид</option>
                   <option value="Ванильный">Ванильный</option>
                   <option value="Карамельный">Карамельный</option>
@@ -144,7 +176,12 @@ const Product = () => {
               </div>
 
               <div className={styles.select}>
-                <select onChange={handleChange} name="decor" id={id}>
+                <select
+                  onChange={handleChange}
+                  name="decor"
+                  id={id}
+                  value={value.decor}
+                >
                   <option value="">Декор</option>
                   <option value="Без декора">Без декора</option>
                   <option value="Ягоды">Ягоды</option>
@@ -153,7 +190,12 @@ const Product = () => {
                 </select>
               </div>
               <div className={styles.select}>
-                <select onChange={handleChange} name="heft" id={id}>
+                <select
+                  onChange={handleChange}
+                  name="heft"
+                  id={id}
+                  value={value.heft}
+                >
                   <option value="">Вес готового изделия</option>
                   <option value="0.5">0,5 кг</option>
                   <option value="1">1 кг</option>
@@ -169,7 +211,11 @@ const Product = () => {
               <div className={styles.price}>{price} руб</div>
               <Modal addStyles={styles.modal}>
                 <div className={styles.modalContainer}>
-                  <div>Выберите количество:</div>
+                  <div
+                    style={{ textAlign: 'center', fontFamily: 'Montserrat' }}
+                  >
+                    Выберите количество:
+                  </div>
                   <div className={styles.counterContainer}>
                     <Button
                       onClick={(e) => {
@@ -229,12 +275,21 @@ const Product = () => {
                   </div>
                   <div>
                     <Button
+                      disabled={disabled}
+                      id={id}
                       onClick={(e) => {
                         setModal(false);
                         e.preventDefault();
                         handleChange(e);
                       }}
-                      addStyles={styles.buttonToCart}
+                      addStyles={
+                        disabled
+                          ? [
+                              styles.buttonToCart,
+                              styles.buttonToCartDisable,
+                            ].join(' ')
+                          : styles.buttonToCart
+                      }
                     >
                       Добавить
                     </Button>
@@ -345,7 +400,7 @@ const Product = () => {
           />
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

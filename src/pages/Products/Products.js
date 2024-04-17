@@ -7,7 +7,7 @@ import { increase_product } from '../../reducers/productSlice';
 import { useContext } from 'react';
 import { AppContext } from '../../App';
 import { Item } from '../../common/Item/Item';
-
+import { easeIn, easeInOut, easeOut, motion } from 'framer-motion';
 const Products = () => {
   const { url } = useParams();
   const { pathname } = useLocation();
@@ -27,7 +27,14 @@ const Products = () => {
     dispatch(increase_product({ id: id, link: link }));
   };
   return (
-    <div className={styles.container} key={link}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15, ease: easeOut }}
+      className={styles.container}
+      key={link}
+    >
       <Title addStyles={styles.titleCatalog} title="Каталог" />
       <nav className={styles.linkContainer}>
         {initialState.map((dish) => (
@@ -62,7 +69,7 @@ const Products = () => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

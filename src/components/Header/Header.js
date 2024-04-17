@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logoGrann.svg';
 import cart from '../../assets/images/cart.svg';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { Burger } from '../../common/Burger/Burger';
 import { ReactComponent as Cross } from '../../assets/images/crossIcon.svg';
-import cake from '../../assets/images/burgerImage.svg';
-export const Header = () => {
+import cake from '../../assets/images/burgerImage.png';
+const Header = memo(() => {
   const navigate = useNavigate();
   const [isShow, setIsShow] = useState(false);
-
+  console.log('Header');
   return (
     <div className={styles.header}>
       <div className={styles.headerContainer}>
@@ -81,4 +81,6 @@ export const Header = () => {
       </div>
     </div>
   );
-};
+});
+
+export default Header;

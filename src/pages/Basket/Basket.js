@@ -6,6 +6,7 @@ import { ReactComponent as Cross } from '../../assets/images/crossIcon.svg';
 import { useNavigate, Link } from 'react-router-dom';
 import { AppContext } from '../../App';
 import cart from '../../assets/images/emptyCart.svg';
+import { easeOut, motion } from 'framer-motion';
 import {
   remove_all_products,
   remove_product,
@@ -13,10 +14,10 @@ import {
 
 const Basket = () => {
   const { products } = useSelector((state) => state.products);
+  // const { link } = products;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { basket, setBasket, basketPrice, props, setProps } =
-    useContext(AppContext);
+  const { basket, setBasket, basketPrice, value } = useContext(AppContext);
 
   const removeItem = ({ currentTarget }) => {
     const { id } = currentTarget;
@@ -36,11 +37,10 @@ const Basket = () => {
       const { link } = elem;
       elem.products.forEach((el) => {
         if (el.cartCount > 0) {
-          el = { ...el, link: link };
-          basketState.push(el);
+          const item = { ...el, link: link };
+          basketState.push(item);
         }
       });
-      console.log(link);
     });
     setBasket(basketState);
   }, []);
@@ -53,17 +53,14 @@ const Basket = () => {
       setBasket([...storage].filter((item) => item.cartCount > 0));
     }
   }, [setBasket]);
-  useEffect(() => {
-    let storage = JSON.parse(localStorage.getItem('props')) || [];
-    if (!storage.length || storage === null) {
-      setProps([]);
-    } else {
-      setProps([...storage].filter((item) => item.cartCount > 0));
-    }
-  }, [setProps]);
-
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15, ease: easeOut }}
+    >
       {basket.length >= 1 ? (
         <div className={styles.removeContainer}>
           <span className={styles.title}>Ваш заказ:</span>
@@ -153,7 +150,7 @@ const Basket = () => {
       ) : (
         ''
       )}
-    </div>
+    </motion.div>
   );
 };
 

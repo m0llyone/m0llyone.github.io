@@ -92,6 +92,7 @@ const productSlice = createSlice({
       });
       localStorage.setItem('basket', JSON.stringify(storage));
     },
+
     remove_all_products: (state, action) => {
       state.products.forEach((item) => {
         item.products.forEach((elem) => {
@@ -110,29 +111,31 @@ const productSlice = createSlice({
       });
       localStorage.clear();
     },
-
     add_props_product: (state, action) => {
       const { id, name, value, link } = action.payload;
+      const { kind, decor, heft } = value;
+      console.log(kind, heft, decor);
       state.products.forEach((item) => {
         if (item.link === link) {
           item.products.forEach((elem) => {
-            if (elem.id === +id && elem.cartCount > 0) {
-              elem = { ...elem, [name]: value };
+            if (elem.id === +id) {
+              elem = { ...elem, kind: kind, decor: decor, heft: heft };
+              console.log(elem);
             }
           });
         }
       });
-      let storage = JSON.parse(localStorage.getItem('props'));
+      let storage = JSON.parse(localStorage.getItem('basket'));
       state.products.forEach((product) => {
         if (product.link === link) {
           storage.forEach((elem) => {
             if (+elem.id === +id && elem.cartCount > 0) {
-              elem = { ...elem, [name]: value };
+              elem = { ...elem, kind: kind, decor: decor, heft: heft };
             }
           });
         }
       });
-      localStorage.setItem('props', JSON.stringify(storage));
+      localStorage.setItem('basket', JSON.stringify(storage));
     },
   },
 });
