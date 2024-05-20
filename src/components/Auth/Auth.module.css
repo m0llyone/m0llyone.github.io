@@ -1,0 +1,177 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  z-index: 51;
+}
+
+.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modalContainer {
+  padding: 30px 20px;
+  background: #f5f7f8;
+  max-width: 550px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  color: #705a66;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.button {
+  width: 100%;
+}
+
+.title {
+  font-size: 32px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+}
+
+.error {
+  color: #bb0000;
+  width: 98%;
+  height: 25px;
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+.label {
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.input {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  outline: none;
+  padding: 10px 15px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f5eee0;
+  font-size: 20px;
+  height: 50px;
+}
+
+.passwordInput {
+  font-family: 'fontello';
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 2px;
+  color: #705a66;
+}
+
+.disabled {
+  background: #ddd2bb !important;
+  cursor: auto !important;
+}
+
+.notRegisteredCont {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.createText {
+  color: #c9b68f;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.button {
+  margin-top: 10px;
+  height: 50px;
+}
+
+.crossContainer {
+  width: 100%;
+  position: relative;
+}
+
+.cross {
+  position: absolute;
+  top: 0;
+  right: 0;
+  fill: #705a66;
+  cursor: pointer;
+  transition: 0.15 ease-in-out;
+}
+
+.cross:hover {
+  fill: #bb0000;
+}
+
+.input:focus {
+  border-bottom: 1px solid #705a66;
+}
+
+.createText:hover {
+  color: #91858c;
+  text-decoration: underline;
+}
+
+.disabled:hover {
+  box-shadow: none !important;
+  color: #705a66 !important;
+}
+
+@media screen and (max-width: 1040px) {
+  .title {
+    font-size: 25px;
+  }
+
+  .input {
+    font-size: 18px;
+  }
+
+  .label {
+    font-size: 15px;
+  }
+
+  .cross {
+    width: 20px;
+    height: 20px;
+  }
+
+  .error {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .modalContainer {
+    margin: 10px;
+  }
+
+  .button {
+    font-size: 18px !important;
+  }
+
+  .notRegisteredCont {
+    font-size: 14px;
+  }
+}

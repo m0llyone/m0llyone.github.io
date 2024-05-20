@@ -35,12 +35,9 @@ const Main = () => {
             </div>
             <div className={styles.textContainer}>
               <div>
-                <div className={styles.subtitle}>
-                  ВСЕ ИНГРЕДИЕНТЫ СВЕЖИЕ И КАЧЕСТВЕННЫЕ!
-                </div>
+                <div className={styles.subtitle}>ВСЕ ИНГРЕДИЕНТЫ СВЕЖИЕ И КАЧЕСТВЕННЫЕ!</div>
                 <span className={styles.text}>
-                  Я заказываю продукты только у поставщиков, которые имеют
-                  сертификаты качества.
+                  Я заказываю продукты только у поставщиков, которые имеют сертификаты качества.
                 </span>
               </div>
               <div>
@@ -48,22 +45,21 @@ const Main = () => {
                   ВОЗМОЖНОСТЬ ЗАКАЗАТЬ ДЕСЕРТ СОГЛАСНО ВАШИХ ПОЖАЛЕНИЙ
                 </div>
                 <span className={styles.text}>
-                  Если по каким-либо причинам вы не употребляете отдельные
-                  продукты десерта, есть возможность сделать заказ по вашим
-                  пожеланиям.
+                  Если по каким-либо причинам вы не употребляете отдельные продукты десерта, есть
+                  возможность сделать заказ по вашим пожеланиям.
                 </span>
               </div>
               <div>
                 <div className={styles.subtitle}>УДОБНЫЙ ВЕС ТОРТА</div>
                 <div className={styles.subtitleFlex}>
                   <span className={styles.text}>
-                    Не обязательно ждать праздника, чтобы заказать вкусненькое.
-                    Наша кондитерская делает миниторты и десерты.
+                    Не обязательно ждать праздника, чтобы заказать вкусненькое. Наша кондитерская
+                    делает миниторты и десерты.
                   </span>
 
                   <span className={styles.text}>
-                    Минимальный вес заказа: Наполеон и медовик – от 0,5 кг.
-                    Муссовые торты – от 0,8 кг.
+                    Минимальный вес заказа: Наполеон и медовик – от 0,5 кг. Муссовые торты – от 0,8
+                    кг.
                   </span>
                 </div>
               </div>
@@ -73,24 +69,12 @@ const Main = () => {
             <Title title="Доставка и оплата" addStyles={styles.deliveryTitle} />
             <div className={styles.deliveryContainer}>
               <div className={styles.delivery}>
-                <img
-                  style={{ marginBottom: '35px' }}
-                  src={box}
-                  alt="delivery"
-                />
+                <img style={{ marginBottom: '35px' }} src={box} alt="delivery" />
                 <span className={styles.subtitle}>САМОВЫЗОВ</span>
-                <span className={styles.deliveryText}>
-                  Самовывоз из Печерского р-на, г. Киев
-                </span>
+                <span className={styles.deliveryText}>Самовывоз из Московского р-на, г. Минск</span>
               </div>
-              <div
-                className={[styles.delivery, styles.deliveryBorder].join(' ')}
-              >
-                <img
-                  style={{ marginBottom: '35px' }}
-                  src={scooter}
-                  alt="delivery"
-                />
+              <div className={[styles.delivery, styles.deliveryBorder].join(' ')}>
+                <img style={{ marginBottom: '35px' }} src={scooter} alt="delivery" />
                 <span className={styles.subtitle}>ДОСТАВКА</span>
                 <span className={styles.deliveryText}>
                   Доставка на такси (по тарифам службы такси)
@@ -115,22 +99,20 @@ const Main = () => {
               <Title title="Обо мне" addStyles={styles.aboutTitle} />
               <div className={styles.aboutContainerText}>
                 <div className={styles.aboutName}>
-                  <span>АННА КОСТРОМА</span>
+                  <span>АНТОН НАЙДЕНОВИЧ</span>
                   <span className={styles.aboutContainerTextInfo}>
-                    Основательница кондитерской Grann Pastry
+                    Основатель кондитерской Grann Pastry
                   </span>
                 </div>
                 <div className={styles.aboutText}>
-                  <div>От хобби к собственному делу.</div>Я закончила DGF
-                  International Culinary School в Киеве, а впоследствии училась
-                  в одной из самых известных школ гостиничного сервиса и
-                  кулинарии в мире Le Cordon Bleu (Франция). Свое дело начала
-                  после того, как получила опыт и работала в одном из крупнейших
-                  кондитерских цехов Грузии (1500 кв.м.).
+                  <div>От хобби к собственному делу.</div>Я закончил DGF International Culinary
+                  School в Минске, а впоследствии учился в одной из самых известных школ
+                  гостиничного сервиса и кулинарии в мире Le Cordon Bleu (Франция). Свое дело начал
+                  после того, как получил опыт и работал в одном из крупнейших кондитерских цехов
+                  Грузии (1500 кв.м.).
                   <div>
-                    Пока начала личный бренд и строю собственный кондитерский
-                    цех. Моя работа меня вдохновляет. Благодаря моим сладостям,
-                    я могу дарить счастливые моменты для вас!
+                    Пока начал личный бренд и строю собственный кондитерский цех. Моя работа меня
+                    вдохновляет. Благодаря моим сладостям, я могу дарить счастливые моменты для вас!
                   </div>
                 </div>
               </div>
@@ -161,15 +143,10 @@ const Main = () => {
               containerClassName: styles.sliderContainer,
               nextButtonText: ' ',
               prevButtonText: ' ',
-              nextButtonClassName: [
-                styles.button,
-                stylesSlider.nextButton,
-                styles.position,
-              ].join(' '),
-              prevButtonClassName: [
-                styles.button,
-                stylesSlider.prevButton,
-              ].join(' '),
+              nextButtonClassName: [styles.button, stylesSlider.nextButton, styles.position].join(
+                ' ',
+              ),
+              prevButtonClassName: [styles.button, stylesSlider.prevButton].join(' '),
               pagingDotsContainerClassName: styles.dotsContainer,
               nextButtonStyle: {
                 backgroundPosition: 'center ',

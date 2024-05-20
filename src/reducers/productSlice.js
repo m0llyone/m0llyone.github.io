@@ -6,6 +6,7 @@ const productSlice = createSlice({
   initialState: {
     products: initialState,
   },
+
   reducers: {
     remove_product: (state, action) => {
       const { id } = action.payload;
@@ -24,7 +25,7 @@ const productSlice = createSlice({
             });
             localStorage.setItem(
               'basket',
-              JSON.stringify([...storage].filter((item) => item.cartCount > 0))
+              JSON.stringify([...storage].filter((item) => item.cartCount > 0)),
             );
           }
         });
@@ -53,10 +54,7 @@ const productSlice = createSlice({
                 if (flag) {
                   localStorage.setItem('basket', JSON.stringify([...storage]));
                 } else {
-                  localStorage.setItem(
-                    'basket',
-                    JSON.stringify([...storage, elem])
-                  );
+                  localStorage.setItem('basket', JSON.stringify([...storage, elem]));
                 }
               } else {
                 localStorage.setItem('basket', JSON.stringify([elem]));

@@ -29,13 +29,13 @@ const initialState = {
   payment: 'cash',
   comment: '',
 };
+
 const OrderForm = () => {
   const [state, setState] = useState(initialState);
   const { error, validate } = useValidate();
   const [active, setActive] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
-  const { modal, setModal, basket, setBasket, basketPrice } =
-    useContext(AppContext);
+  const { modal, setModal, basket, setBasket, basketPrice } = useContext(AppContext);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -51,9 +51,7 @@ const OrderForm = () => {
 
   useEffect(() => {
     const disabled =
-      Object.values(error).find((el) => el !== '') ||
-      state.name === '' ||
-      state.phone === '';
+      Object.values(error).find((el) => el !== '') || state.name === '' || state.phone === '';
 
     setIsDisabled(disabled);
   }, [error, state.name]);
@@ -181,7 +179,7 @@ const OrderForm = () => {
                 />
                 <span></span>
                 <label className={styles.radioText} htmlFor="selfCall">
-                  Самовывоз из Печерского р-на, г. Киев.
+                  Самовывоз из Московского р-на, г. Минск.
                 </label>
               </div>
               <div className={styles.radio}>
@@ -253,10 +251,7 @@ const OrderForm = () => {
                       style={{ maxWidth: '182px' }}
                       placeholder=" "
                       id="street"
-                      className={[
-                        styles.formInput,
-                        styles.formInputAddress,
-                      ].join(' ')}
+                      className={[styles.formInput, styles.formInputAddress].join(' ')}
                       name="address"
                       type="text"
                       value={state.address.street}
@@ -276,10 +271,7 @@ const OrderForm = () => {
                       style={{ maxWidth: '182px' }}
                       placeholder=" "
                       id="house"
-                      className={[
-                        styles.formInput,
-                        styles.formInputAddress,
-                      ].join(' ')}
+                      className={[styles.formInput, styles.formInputAddress].join(' ')}
                       name="address"
                       type="text"
                       value={state.address.house}
@@ -298,9 +290,7 @@ const OrderForm = () => {
                     style={{ maxWidth: '182px' }}
                     placeholder=" "
                     id="entrance"
-                    className={[styles.formInput, styles.formInputAddress].join(
-                      ' '
-                    )}
+                    className={[styles.formInput, styles.formInputAddress].join(' ')}
                     name="address"
                     type="text"
                     value={state.address.entrance}
@@ -316,9 +306,7 @@ const OrderForm = () => {
                     style={{ maxWidth: '182px' }}
                     placeholder=" "
                     id="housing"
-                    className={[styles.formInput, styles.formInputAddress].join(
-                      ' '
-                    )}
+                    className={[styles.formInput, styles.formInputAddress].join(' ')}
                     name="address"
                     type="text"
                     value={state.address.housing}
@@ -334,10 +322,7 @@ const OrderForm = () => {
                       style={{ maxWidth: '182px' }}
                       placeholder=" "
                       id="flat"
-                      className={[
-                        styles.formInput,
-                        styles.formInputAddress,
-                      ].join(' ')}
+                      className={[styles.formInput, styles.formInputAddress].join(' ')}
                       name="address"
                       type="text"
                       value={state.address.flat}
@@ -356,9 +341,7 @@ const OrderForm = () => {
                     style={{ maxWidth: '182px' }}
                     placeholder=" "
                     id="floor"
-                    className={[styles.formInput, styles.formInputAddress].join(
-                      ' '
-                    )}
+                    className={[styles.formInput, styles.formInputAddress].join(' ')}
                     name="address"
                     type="text"
                     value={state.address.floor}
@@ -375,10 +358,7 @@ const OrderForm = () => {
           </div>
           <div className={styles.inputContainer}>
             <span className={styles.formTitle}>Способ оплаты</span>
-            <div
-              style={{ marginBottom: '-10px' }}
-              className={styles.radioContainer}
-            >
+            <div style={{ marginBottom: '-10px' }} className={styles.radioContainer}>
               <div className={styles.radio}>
                 <input
                   id="cash"
@@ -427,9 +407,7 @@ const OrderForm = () => {
           <Button
             disabled={isDisabled}
             addStyles={
-              isDisabled
-                ? [styles.formButton, styles.disabled].join(' ')
-                : styles.formButton
+              isDisabled ? [styles.formButton, styles.disabled].join(' ') : styles.formButton
             }
             onClick={(e) => {
               e.preventDefault();
@@ -445,8 +423,8 @@ const OrderForm = () => {
             <img height={'152px'} width={'182px'} src={cake} alt="cake" />
             <Title addStyles={styles.modalTitle} title="Спасибо за заказ!" />
             <div className={styles.modalText}>
-              Ваш заказ принят в обработку и вскоре вам позвонит по телефону
-              менеджер для уточнения деталей.
+              Ваш заказ принят в обработку и вскоре вам позвонит по телефону менеджер для уточнения
+              деталей.
             </div>
             <div className={styles.buttonContainerModal}>
               <Link to="/">
@@ -455,9 +433,7 @@ const OrderForm = () => {
 
               <Button
                 onClick={() => navigate('/catalog/cakes')}
-                addStyles={[styles.buttonModal, styles.buttonColorModal].join(
-                  ' '
-                )}
+                addStyles={[styles.buttonModal, styles.buttonColorModal].join(' ')}
               >
                 Продолжить покупки
               </Button>

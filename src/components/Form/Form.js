@@ -24,13 +24,10 @@ export const Form = () => {
     <div className={styles.background}>
       <div className={styles.container}>
         <div className={styles.titleContainer}>
-          <div className={styles.title}>
-            Давай сделаем что-нибудь уникальное!
-          </div>
+          <div className={styles.title}>Давай сделаем что-нибудь уникальное!</div>
           <div className={styles.text}>
-            Вы можете заказать свой собственный рецепт десерта, который вам
-            нравится. Заполните заявку и свяжусь с вами, чтобы обсудить детали
-            заказа.
+            Вы можете заказать свой собственный рецепт десерта, который вам нравится. Заполните
+            заявку и я свяжусь с вами, чтобы обсудить детали заказа.
           </div>
         </div>
         <form onSubmit={handleSubmit} className={styles.formContainer}>
