@@ -10,7 +10,7 @@ import Preloader from './common/Preloader/Preloader';
 import { AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { setUser } from './reducers/userSlice';
-import { CLIENTURL } from './data/constants';
+import { SERVER_URL } from './data/constants';
 import axios from 'axios';
 export const AppContext = createContext();
 
@@ -57,7 +57,7 @@ function App() {
 
   const auth = async () => {
     try {
-      const response = await axios.get(`${CLIENTURL}/api/auth`, {
+      const response = await axios.get(`${SERVER_URL}/api/auth`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       dispatch(setUser(response.data.user));

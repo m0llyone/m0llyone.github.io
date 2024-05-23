@@ -23,7 +23,7 @@
 }
 
 .title {
-  color: #F5F7F8;
+  color: #f5f7f8;
   font-family: 'Jeff';
   font-size: 54px;
   max-width: 100%;
@@ -36,7 +36,7 @@
 .text {
   width: 395px;
   max-width: 100%;
-  color: #F5F7F8;
+  color: #f5f7f8;
   font-family: 'Montserrat';
   font-size: 18px;
   line-height: 130%;
@@ -53,10 +53,10 @@
   height: 60px;
   padding: 20px 30px;
   border-radius: 10px;
-  background: #F5F7F8;
+  background: #f5f7f8;
   outline: none;
   border: none;
-  color: #705A66;
+  color: #705a66;
   font-family: 'Montserrat';
   font-size: 18px;
 }
@@ -64,6 +64,28 @@
 .formButton {
   width: 500px;
   height: 67px;
+}
+
+.disabled {
+  background: #ddd2bb !important;
+  cursor: auto !important;
+}
+
+.disabled:hover {
+  box-shadow: none !important;
+  color: #705a66 !important;
+}
+
+.tooltipContainer {
+  background-color: var(--rt-color-warning);
+  color: var(--rt-color-white);
+  padding: 10px 16px;
+  border-radius: 5px;
+}
+
+.tooltipArrow {
+  width: 0;
+  height: 0;
 }
 
 @media screen and (max-width: 1240px) {
@@ -74,7 +96,7 @@
   }
 }
 
-@media screen and (max-width: 1110px){
+@media screen and (max-width: 1110px) {
   .background {
     margin: 100px 0;
   }
@@ -85,7 +107,8 @@
 }
 
 @media screen and (max-width: 600px) {
-  .formButton, .input {
+  .formButton,
+  .input {
     width: 355px;
   }
 

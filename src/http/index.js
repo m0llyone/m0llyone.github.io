@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { CLIENTURL } from '../data/constants';
+import { SERVER_URL } from '../data/constants';
 
-export const BASE_URL = `${CLIENTURL}/api`;
+export const BASE_URL = `${SERVER_URL}/api`;
 
 const $api = axios.create({
   withCredentials: true,
